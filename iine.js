@@ -34,13 +34,13 @@ javascript:(function(){
             alert("max");
         }else{
             var newtab =[];
-            for(var i=0;i<1;i++){
+            for(var i=0;i<3;i++){
                 if(links.length > window.counter){
                     newtab[i] = window.open(links[window.counter], '_blank');
                     window.counter++;
                 }
             }
-            newtab[4].focus();
+            newtab[0].focus();
         }
     }
 })();
