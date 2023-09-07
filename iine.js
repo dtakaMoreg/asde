@@ -33,8 +33,12 @@ javascript:(function(){
         if(links.length <= window.counter){
             alert("max");
         }else{
-            window.open(links[window.counter], '_blank');
-            window.counter++;
+            for(var i=0;i<5;i++){
+                if(links.length > window.counter){
+                    window.open(links[window.counter], '_blank');
+                    window.counter++;
+                }
+            }
         }
     }
 })();
