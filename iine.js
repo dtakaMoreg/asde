@@ -33,12 +33,14 @@ javascript:(function(){
         if(links.length <= window.counter){
             alert("max");
         }else{
+            var newtab =[];
             for(var i=0;i<5;i++){
                 if(links.length > window.counter){
-                    window.open(links[window.counter], '_blank');
+                    newtab[i] = window.open(links[window.counter], '_blank');
                     window.counter++;
                 }
             }
+            newtab[0].focus();
         }
     }
 })();
