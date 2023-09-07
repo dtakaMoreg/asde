@@ -40,7 +40,7 @@ javascript:(function(){
                     window.counter++;
                 }
             }
-            newtab[0].focus();
+            //newtab[0].focus();
         }
     }
 })();
