@@ -37,7 +37,7 @@ javascript:(function(){
                 window.counter = i+1;
                 window.remove++;
                 cnt++;
-                if(cnt>3){
+                if(cnt>=3){
                     break;
                 }
             }
