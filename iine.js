@@ -37,6 +37,7 @@ javascript:(function(){
             for(var i=0;i<5;i++){
                 if(links.length > window.counter){
                     newtab[i] = window.open(links[window.counter], '_blank');
+                    links[window.counter].textContent = "[done] " + links[window.counter].textContent
                     window.counter++;
                 }
             }
