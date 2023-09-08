@@ -43,10 +43,11 @@ javascript:(function(){
     // max?
     if(i === elements.length){
         window.counter = i;
+        //スクロール
+        userList.scrollBy(0, 2000);
     }
 
-    //スクロール
-    userList.scrollBy(0, 2000);
+   
     
     var message = "success[" + window.remove + "] search : " + stnum + " to " + i;
     window.toast.textContent = message;
