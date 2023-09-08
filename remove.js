@@ -24,6 +24,7 @@ javascript:(function(){
     const elements = document.querySelectorAll('[class*="profile-wrapper"]');
     
     var stnum = window.counter;
+    var cnt = 0;
     for(var i=stnum;i<elements.length;i++){
         const roomRankElements = elements[i].querySelectorAll('[class*="room-rank"]');
         if(roomRankElements.length>0){
@@ -35,7 +36,10 @@ javascript:(function(){
                 btns[0].click();
                 window.counter = i+1;
                 window.remove++;
-                break;
+                cnt++;
+                if(cnt>3){
+                    break;
+                }
             }
         }
     }
