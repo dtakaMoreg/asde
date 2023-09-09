@@ -1,8 +1,8 @@
 javascript:(function(){
     //変数初期化
     if(typeof window.counter === 'undefined'){
-        window.counter = window.prompt("開始を入力してください", "");
-        //window.counter = 0;
+        //window.counter = window.prompt("開始を入力してください", "");
+        window.counter = 2000;
         window.remove  = 0;
     }
     
