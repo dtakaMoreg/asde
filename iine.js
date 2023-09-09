@@ -31,7 +31,7 @@ javascript:(function(){
         window.max_count = links.length
             
         if(links.length <= window.counter){
-            alert("max");
+            alert("max success[" + window.success_count + "]");
         }else{
             var newtab =[];
             for(var i=0;i<5;i++){
