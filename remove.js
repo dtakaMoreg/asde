@@ -1,8 +1,8 @@
 javascript:(function(){
+
     //変数初期化
     if(typeof window.counter === 'undefined'){
-        //window.counter = window.prompt("開始を入力してください", "");
-        window.counter = 0;
+        window.counter = window.prompt("開始を入力してください", "");
         window.remove  = 0;
     }
     
@@ -26,7 +26,8 @@ javascript:(function(){
     
     var stnum = window.counter;
     var cnt = 0;
-    for(var i=stnum;i<elements.length;i++){
+    var i;
+    for(i=stnum;i<elements.length;i++){
         const roomRankElements = elements[i].querySelectorAll('[class*="room-rank"]');
         if(roomRankElements.length>0){
             s = roomRankElements[0].getAttribute("class").indexOf("room-rank") + 10
@@ -46,10 +47,13 @@ javascript:(function(){
     }
 
     // max?
-    if(i === elements.length){
+    if(i >= elements.length){
         window.counter = i;
         //スクロール
         userList.scrollBy(0, 2000);
+        
+        if(window.counter-elements.length>20){userList.scrollBy(0, 2000);}
+        
     }
 
    
