@@ -1,19 +1,19 @@
 javascript:(function(){
-debugger
+
     //roomを開いているなら
     if (window.location.href.indexOf('https://room.rakuten.co.jp/') !== -1) {
-        var v = localStorage.getItem('value');
-        if(v === null) v = 0;
-        v = Number(v);
+        //var v = localStorage.getItem('value');
+        //if(v === null) v = 0;
+        //v = Number(v);
         
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
         var like = buttonElements[4].querySelector("div");
         if(like.className.includes("color-white")){
             like.click();
-            localStorage.setItem('value', v+1);
+            //localStorage.setItem('value', v+1);
         }else{
-            localStorage.setItem('value', v);
+            //localStorage.setItem('value', v);
         }
         //とじる
         window.close();
@@ -26,7 +26,7 @@ debugger
         }
         
         if(typeof window.success_count === 'undefined'){
-            localStorage.clear()
+            //localStorage.clear()
             window.success_count = 0;
         }
         
@@ -36,8 +36,9 @@ debugger
     
         var links = document.querySelectorAll('a');
         window.max_count = links.length
-            
-        window.success_count += localStorage.getItem('value');
+        //var vv = localStorage.getItem('value');
+        //vv += Number(vv);
+        //window.success_count += vv
         
         if(links.length <= window.counter){
             alert("max success[" + window.success_count + "]");
