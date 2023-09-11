@@ -20,7 +20,9 @@ javascript:(function(){
         var like = buttonElements[4].querySelector("div");
         if(like.className.includes("color-white")){
             like.click();
-            window.success_count++;
+            sessionStorage.setItem('value', 1);
+        }else{
+            sessionStorage.setItem('value', 0);
         }
         //とじる
         window.close();
@@ -30,6 +32,8 @@ javascript:(function(){
         var links = document.querySelectorAll('a');
         window.max_count = links.length
             
+        window.success_count += sessionStorage.getItem('value');
+        
         if(links.length <= window.counter){
             alert("max success[" + window.success_count + "]");
         }else{
