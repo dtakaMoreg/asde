@@ -65,7 +65,7 @@ javascript:(function(){
 
     setTimeout(function() {
       window.toast.style.display = "none";
-      bodycont.style.zIndex += 1
+      bodycont.style.zIndex = 0xFFFFFFFF;
     }, 3000); // メッセージを3秒後に非表示にする
 
     
