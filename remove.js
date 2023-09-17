@@ -10,11 +10,9 @@ javascript:(function(){
     
     
     //トースト
+    const bodycont = document.querySelectorAll('[class*="body-container"]')[0];
     if(typeof window.toast === 'undefined'){
     
-        // メインリストのz-indexを下げる
-        const bodycont = document.querySelectorAll('[class*="body-container"]')[0];
-        bodycont.style.zIndex -= 1
     
         window.toast = document.createElement("div");
         window.toast.style.cssText = "position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; z-index: 2147483647;";
@@ -39,7 +37,7 @@ javascript:(function(){
                 window.counter = i+1;
                 window.remove++;
                 cnt++;
-                if(cnt>=3){
+                if(cnt>=6){
                     break;
                 }
             }
@@ -62,8 +60,12 @@ javascript:(function(){
     window.toast.textContent = message;
     window.toast.style.display = "block";
     
+    // メインリストのz-indexを下げる
+    bodycont.style.zIndex -= 1
+
     setTimeout(function() {
       window.toast.style.display = "none";
+      bodycont.style.zIndex += 1
     }, 3000); // メッセージを3秒後に非表示にする
 
     
