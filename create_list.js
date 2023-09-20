@@ -6,7 +6,7 @@ javascript:(function() {
 
     for (var i = 0; i < links.length; i++) {
         hreft=links[i].getAttribute("href");
-        if (hreft != null && hreft.length > 6 && hreft.includes("/items")) {
+        if (hreft != null && hreft.length > 7 && hreft.includes("/items")) {
             tmplst.push('https://room.rakuten.co.jp' + hreft);
         }
     }
