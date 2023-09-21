@@ -58,6 +58,7 @@ javascript:(function() {
             setTimeout(clickNextLink, nexttime*1000);
     
         } else {
+            window.toast.style.display = "none";
             alert('すべてのリンクをクリックしました。'); // すべてのリンクをクリックし終えたらアラートを表示
         }
     }
