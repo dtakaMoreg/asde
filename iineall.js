@@ -46,12 +46,29 @@ javascript:(function() {
         document.body.appendChild(window.toast);
     }
     
+    function getRandomWeightedNumber() {
+        const rand = Math.random();
+        if (rand < 0.3) {
+            // 30%の確率で1または2を選択
+            return Math.floor(Math.random() * 2) + 1;
+        } else if (rand < 0.8) {
+            // 50%の確率で3を選択
+            return 3;
+        } else if (rand < 0.9) {
+            // 10%の確率で4を選択
+            return 4;
+        } else {
+            // 10%の確率で5を選択
+            return 5;
+        }
+    }
+
     
     function clickNextLink() {
         if ((linkIndex < likedElements.length) && (linkIndex <= max_count)){
             likedElements[linkIndex].click();
             //alert(linkIndex + "/" + likedElements.length);
-            var nexttime = (Math.floor(Math.random() * 5) + 1)
+            var nexttime = getRandomWeightedNumber();
             
             var message = linkIndex + "/" + max_count + " next-> " + nexttime;
             window.toast.textContent = message;
