@@ -21,6 +21,11 @@ javascript:(function() {
       }
     }
     
+    // max_countが0ならそこまでで実行する
+    if(max_count == 0){
+        max_count = likedElements.length;
+    }
+    
     // 満たせているか
     if(likedElements.length < max_count){
         alert("足りない" + likedElements.length + "/" + likedCount);
