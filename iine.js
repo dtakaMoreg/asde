@@ -51,10 +51,7 @@ javascript:(function(){
             window.close();
         }else{
             var newtab =[];
-            
-            // 開いた後やらないケースの方が多いので開く直前のカウントを保持する
-            localStorage.setItem('opened', window.counter);
-            
+                        
             for(var i=0;i<10;i++){
                 if(links.length > window.counter){
                     newtab[i] = window.open(links[window.counter], '_blank');
@@ -63,6 +60,9 @@ javascript:(function(){
                     
                 }
             }
+            
+            //開いた数更新
+            localStorage.setItem('opened', window.counter);
             
             //トースト更新
             var message = window.counter + "/" + links.length;
