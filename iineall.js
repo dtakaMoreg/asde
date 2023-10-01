@@ -48,11 +48,11 @@ javascript:(function() {
     
     function getRandomWeightedNumber() {
         const rand = Math.random();
-        if (rand < 0.3) {
-            // 30%の確率で1または2を選択
+        if (rand < 0.4) {
+            // 40%の確率で1または2を選択
             return Math.floor(Math.random() * 2) + 1;
         } else if (rand < 0.8) {
-            // 50%の確率で3を選択
+            // 40%の確率で3を選択
             return 3;
         } else if (rand < 0.9) {
             // 10%の確率で4を選択
