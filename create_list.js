@@ -14,6 +14,7 @@ javascript:(function() {
     tmplst = Array.from(new Set(tmplst));
 
     linkTexts.push('<html lang="ja">');
+    linkTexts.push('<div class="link_text"></div>');
     for (var i = 0; i < tmplst.length; i++) {
         linkTexts.push('<a href="' + tmplst[i] + '">User_' + (i+1) + '</a></br>');
     }

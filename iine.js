@@ -1,7 +1,7 @@
 javascript:(function(){
 
     var currentURL = window.location.href;
-    alert(currentURL)
+
     //roomを開いているなら
     if (currentURL.indexOf('https://room.rakuten.co.jp/') !== -1) {
         //var v = localStorage.getItem('value');
@@ -21,7 +21,7 @@ javascript:(function(){
         window.close();
 
     //リストを開いているなら
-    } else if(currentURL.indexOf('link_text') !== -1) {
+    } else if(document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
 
         //変数を初期化
         if(typeof window.counter === 'undefined'){
@@ -57,7 +57,7 @@ javascript:(function(){
             
             for(var i=0;i<10;i++){
                 if(links.length > window.counter){
-                    newtab[i] = window.open(links[window.counter], '_blank');
+                    //newtab[i] = window.open(links[window.counter], '_blank');
                     links[window.counter].textContent = "[done] " + links[window.counter].textContent
                     window.counter++;
                     
