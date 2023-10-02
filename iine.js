@@ -1,4 +1,4 @@
-javascript:(function(){
+まjavascript:(function(){
 
     var currentURL = window.location.href;
 
@@ -52,7 +52,7 @@ javascript:(function(){
         }else{
             var newtab =[];
                         
-            for(var i=0;i<10;i++){
+            for(var i=0;i<6;i++){
                 if(links.length > window.counter){
                     newtab[i] = window.open(links[window.counter], '_blank');
                     links[window.counter].textContent = "[done] " + links[window.counter].textContent
