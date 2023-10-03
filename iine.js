@@ -35,7 +35,7 @@
         if(typeof window.toast === 'undefined'){
         
             window.toast = document.createElement("div");
-            window.toast.style.cssText = "position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; z-index: 2147483647; font-size: 32px;";
+            window.toast.style.cssText = "position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; z-index: 2147483647; font-size: 64px;";
             window.toast.style.display = "none";
             document.body.appendChild(window.toast);
         }
