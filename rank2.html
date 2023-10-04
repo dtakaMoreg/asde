@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>リンクを開く</title>
+</head>
+<body>
+  <!-- ボタンを配置 -->
+  <button id="openAllLinksButton">すべてのリンクを開く</button>
+
+  <!-- リンクの例 -->
+<a href="https://room.rakuten.co.jp/discover/collectItemRank/2800000558885410">靴</a><br>
+<a href="https://room.rakuten.co.jp/discover/collectItemRank/2800000215783421">日用品</a><br>
+<a href="https://room.rakuten.co.jp/discover/collectItemRank/2800000551167181">スイーツ</a><br>
+<a href="https://room.rakuten.co.jp/discover/collectItemRank/2800000551177415">メンズ</a><br>
+<a href="https://room.rakuten.co.jp/discover/collectItemRank/2800000100227282">食品</a><br>
+
+  <!-- 他のリンクを追加 -->
+
+  <!-- JavaScriptコード -->
+  <script>
+    // ボタン要素を取得
+    var openAllLinksButton = document.getElementById('openAllLinksButton');
+
+    // ボタンがクリックされたときの処理を設定
+    openAllLinksButton.addEventListener('click', function() {
+      // ページ内のすべてのリンク要素を取得
+      var links = document.getElementsByTagName('a');
+
+      // すべてのリンクを開く処理
+      for (var i = 0; i < links.length; i++) {
+        window.open(links[i].href);
+      }
+    });
+  </script>
+</body>
+</html>
