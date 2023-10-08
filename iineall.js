@@ -7,7 +7,7 @@ javascript:(function() {
     var likedElements = [];  //いいねできる要素を格納
     
     var max_count;
-    max_count = window.prompt("いいねする数を入力してください", "100");
+    max_count = window.prompt("いいねする数を入力してください", "0");
     
     // いいねできるものを取得
     for(var i = 0; i < links.length; i++){
@@ -48,7 +48,7 @@ javascript:(function() {
     
     function getRandomWeightedNumber() {
         const rand = Math.random();
-        if (rand < 0.4) {
+        if (rand < 0.7) {
             // 40%の確率で1または2を選択
             return Math.floor(Math.random() * 2) + 1;
         } else if (rand < 0.8) {
@@ -56,10 +56,10 @@ javascript:(function() {
             return 3;
         } else if (rand < 0.9) {
             // 10%の確率で4を選択
-            return 4;
+            return 3;
         } else {
             // 10%の確率で5を選択
-            return 5;
+            return 3;
         }
     }
 
