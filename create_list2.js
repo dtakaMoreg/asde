@@ -2,8 +2,9 @@ javascript:(function() {
     var linkTexts = [];
     var tmplst = [];
     var cnt = 0;
-    var fileName =""
-
+    var fileName ="";
+    var scroll_count= 0;
+    
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
     if(userList == null){
@@ -21,12 +22,20 @@ javascript:(function() {
         var prevHeight = userList.scrollTop;
         scrollToBottom();
         if (prevHeight === userList.scrollTop) {
-            clearInterval(scrollInterval);
+            if(scroll_count>10){
+                clearInterval(scrollInterval);
             
-            // スクロールが終了したらリンク要素を取得します
-            getRoomLink();
+                // スクロールが終了したらリンク要素を取得します
+                getRoomLink();
+            }else{
+               scroll_count++;
+            }
+            
+        }else{
+            scroll_count =　0;
         }
-    }, 2000); // 2秒ごとにスクロール
+        
+    }, 1000); // 1秒ごとにスクロール
 
 
     // リンク要素を取得
