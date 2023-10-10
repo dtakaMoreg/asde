@@ -2,7 +2,7 @@ javascript:(function() {
     var linkTexts = [];
     var tmplst = [];
     var cnt = 0;
-
+    var fileName =""
 
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
@@ -39,6 +39,10 @@ javascript:(function() {
             }
         }
         tmplst = Array.from(new Set(tmplst));+
+        const now = new Date();
+        const formattedDate = now.toISOString().replace(/[-T:.Z]/g, "").slice(0, 14); // yyyymmddhhmmss形式にフォーマット
+        fileName = `list_${formattedDate}.txt`; // ファイル名は適宜変更してください
+
         
         // ダウンロードを開始します
         startDownload();
@@ -69,7 +73,7 @@ javascript:(function() {
 
             var a = document.createElement('a');
             a.href = url;
-            a.download = 'link_text_' + (batchIndex + 1) + '.html';
+            a.download = fileName + (batchIndex + 1) + '.html';
             a.style.display = 'none';
             document.body.appendChild(a);
 
