@@ -47,7 +47,7 @@
         if(links.length <= window.counter){
             //alert("max");
             window.toast.style.display = "none";
-            //localStorage.clear();
+            localStorage.clear();
             window.close();
         }else{
             var newtab =[];
