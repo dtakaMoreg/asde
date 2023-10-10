@@ -50,7 +50,7 @@ javascript:(function() {
         tmplst = Array.from(new Set(tmplst));
         const now = new Date();
         const formattedDate = now.toISOString().replace(/[-T:.Z]/g, "").slice(0, 14); // yyyymmddhhmmss形式にフォーマット
-        fileName = `list_${formattedDate}.txt`; // ファイル名は適宜変更してください
+        fileName = `list_${formattedDate}_`; // ファイル名は適宜変更してください
 
         
         // ダウンロードを開始します
