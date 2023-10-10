@@ -47,7 +47,7 @@ javascript:(function() {
                 tmplst.push('https://room.rakuten.co.jp' + hreft);
             }
         }
-        tmplst = Array.from(new Set(tmplst));+
+        tmplst = Array.from(new Set(tmplst));
         const now = new Date();
         const formattedDate = now.toISOString().replace(/[-T:.Z]/g, "").slice(0, 14); // yyyymmddhhmmss形式にフォーマット
         fileName = `list_${formattedDate}.txt`; // ファイル名は適宜変更してください
