@@ -52,7 +52,7 @@
         }else{
             var newtab =[];
                         
-            for(var i=0;i<6;i++){
+            for(var i=0;i<1;i++){
                 if(links.length > window.counter){
                     newtab[i] = window.open(links[window.counter], '_blank');
                     links[window.counter].textContent = "[done] " + links[window.counter].textContent
