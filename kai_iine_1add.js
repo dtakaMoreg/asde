@@ -63,6 +63,7 @@ javascript:(function() {
             localStorage.removeItem("nextResetTime");
             localStorage.removeItem("collectedURLs");
             localStorage.removeItem("nextURLNo");
+            localStorage.removeItem("iineClick");
             
             // 開始時刻を設定
             var currentHour = currentDate.getHours();

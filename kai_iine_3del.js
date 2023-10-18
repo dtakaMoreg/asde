@@ -3,4 +3,5 @@ javascript:(function(){
     localStorage.removeItem("nextResetTime");
     localStorage.removeItem("collectedURLs");
     localStorage.removeItem("nextURLNo");
+    localStorage.removeItem("iineClick");
 })();
