@@ -23,7 +23,8 @@
 
         // 現在のページのファイル名を取得
         const currentPage = window.location.pathname.split('/').pop();
-
+        
+        
         // localStorageから保存されたカウンターを取得
         var counter = localStorage.getItem(currentPage);
 
@@ -34,6 +35,20 @@
           counter = parseInt(counter);
         }
 
+        // localStorageから最後の実行時刻を取得
+        const currentTime = new Date().getTime();
+        const lastExecutionTime = localStorage.getItem('last_execution_time') || 0;
+        
+        if (currentTime - parseInt(lastExecutionTime) >= 3600000) {
+            // 1時間以上経過した場合、counterを0に設定
+            clickcounter = 0;
+          
+        } else {
+            // 最後の実行から1時間以内の場合、counterの値を使用
+            clickcounter = localStorage.getItem('clickcounter') || 0;
+            clickcounter = parseInt(clickcounter);
+        }
+        
         
         //トースト
         if(typeof window.toast === 'undefined'){
@@ -51,8 +66,13 @@
         if(links.length <= counter){
             //alert("max");
             window.toast.style.display = "none";
-            localStorage.clear();
+            localStorage.removeItem(currentPage);
             window.close();
+            
+        // 300超えてたら終わらせる
+        }else if(clickcounter > 3){
+            alert(`You have exceeded ${clickcounter} clicks`);
+            
         }else{
             var newtab =[];
                         
@@ -65,6 +85,9 @@
                     // localStorageに保存
                     localStorage.setItem(currentPage, counter);
 
+                    clickcounter++;
+                    localStorage.setItem('clickcounter', clickcounter);
+                    localStorage.setItem('last_execution_time', currentTime);
                 }
             }
             
