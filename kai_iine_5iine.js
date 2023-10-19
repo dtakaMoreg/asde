@@ -70,7 +70,7 @@
             window.close();
             
         // 300超えてたら終わらせる
-        }else if(clickcounter > 3){
+        }else if(clickcounter > 300){
             alert(`You have exceeded ${clickcounter} clicks`);
             
         }else{
