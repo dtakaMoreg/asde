@@ -78,7 +78,7 @@
                         
             for(var i=0;i<1;i++){
                 if(links.length > counter){
-                    newtab[i] = window.open(links[counter], '_blank');
+                    //newtab[i] = window.open(links[counter], '_blank');
                     links[counter].textContent = "[done] " + links[counter].textContent
                     counter++;
                     
