@@ -35,7 +35,7 @@ javascript:(function() {
             URL.revokeObjectURL(url);
             document.body.removeChild(a);
 
-            alert('ダウンロードが完了しました [' + parseInt(nextinfo)+1 + ']->[' + collectedURLs.length + ']');
+            alert('ダウンロードが完了しました [' + (parseInt(nextinfo)+1) + ']->[' + collectedURLs.length + ']');
             
             //最後のNoを覚えておく
             localStorage.setItem('nextURLNo', collectedURLs.length);
