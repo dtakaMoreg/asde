@@ -83,15 +83,17 @@ javascript:(function() {
 
         // URLを追加
         var collectedURLs = JSON.parse(localStorage.getItem('collectedURLs')) || [];
+        var beforecnt = collectedURLs.length;
         collectedURLs.push(...tmplst);
 
         // 重複の削除
         collectedURLs = Array.from(new Set(collectedURLs));
+        var aftercnt = collectedURLs.length;
         
         // ローカルストレージに収集したURLを保存
         localStorage.setItem('collectedURLs', JSON.stringify(collectedURLs));
 
-        alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']');
+        alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']([' + beforecnt + ']->[' + aftercnt + '])');
     
     }
 

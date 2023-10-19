@@ -21,13 +21,19 @@
     //リストを開いているなら
     } else if(document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
 
-        //変数を初期化
-        if(typeof window.counter === 'undefined'){
-            //途中で終わってたら途中から
-            opened = localStorage.getItem('opened');
-            window.counter = (opened !== null) ? opened : 0;
+        // 現在のページのファイル名を取得
+        const currentPage = window.location.pathname.split('/').pop();
+
+        // localStorageから保存されたカウンターを取得
+        var counter = localStorage.getItem(currentPage);
+
+        // カウンターがnull（まだ設定されていない）場合、0に設定
+        if (counter === null) {
+          counter = 0;
+        } else {
+          counter = parseInt(counter);
         }
-        
+
         
         //トースト
         if(typeof window.toast === 'undefined'){
@@ -42,7 +48,7 @@
         var links = document.querySelectorAll('a');
 
         // リンクチェック
-        if(links.length <= window.counter){
+        if(links.length <= counter){
             //alert("max");
             window.toast.style.display = "none";
             localStorage.clear();
@@ -51,19 +57,20 @@
             var newtab =[];
                         
             for(var i=0;i<1;i++){
-                if(links.length > window.counter){
-                    newtab[i] = window.open(links[window.counter], '_blank');
-                    links[window.counter].textContent = "[done] " + links[window.counter].textContent
-                    window.counter++;
+                if(links.length > counter){
+                    newtab[i] = window.open(links[counter], '_blank');
+                    links[counter].textContent = "[done] " + links[counter].textContent
+                    counter++;
                     
+                    // localStorageに保存
+                    localStorage.setItem(currentPage, counter);
+
                 }
             }
             
-            //開いた数更新
-            localStorage.setItem('opened', window.counter);
-            
+
             //トースト更新
-            var message = window.counter + "/" + links.length;
+            var message = counter + "/" + links.length;
             window.toast.textContent = message;
             window.toast.style.display = "block";
         }
