@@ -9,11 +9,7 @@
         
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
-            alert(buttonElements[0].innerText)
-        alert(buttonElements[1].innerText)
-        alert(buttonElements[2].innerText)
-        alert(buttonElements[3].innerText)
-        alert(buttonElements[4].innerText)
+           
         var follow = buttonElements[1];
         var follow = buttonElements[3];
         if(follow.innerText === "フォローする"){
