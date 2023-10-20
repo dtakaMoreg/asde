@@ -71,8 +71,11 @@
             
         // 300超えてたら終わらせる
         }else if(clickcounter > 300){
-            alert(`You have exceeded ${clickcounter} clicks`);
-            
+
+            //トースト更新
+            var message = `You have exceeded ${clickcounter} clicks`;
+            window.toast.textContent = message;
+            window.toast.style.display = "block";
         }else{
             var newtab =[];
                         
