@@ -10,7 +10,7 @@
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
         
-        var follow = buttonElements[2];
+        var follow = buttonElements[1];
         if(follow.innerText === "フォローする"){
             follow.click();
             vint++;
