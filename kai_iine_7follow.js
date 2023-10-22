@@ -10,11 +10,7 @@ javascript:(function(){
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
         
-        var follow = buttonElements[4];
-        alert(buttonElements[0].innerText)
-        alert(buttonElements[1].innerText)
-        alert(buttonElements[2].innerText)
-        alert(buttonElements[3].innerText)
+        var follow = buttonElements[2];
         if(follow.innerText === "フォローする"){
             follow.click();
             vint++;
@@ -50,8 +46,8 @@ javascript:(function(){
           
         } else {
             // 最後の実行から1時間以内の場合、counterの値を使用
-            clickcounter = localStorage.getItem('followclickcounter') || 0;
-            clickcounter = parseInt(clickcounter);
+            followclickcounter = localStorage.getItem('followclickcounter') || 0;
+            followclickcounter = parseInt(clickcounter);
         }
         
         
@@ -75,10 +71,10 @@ javascript:(function(){
             window.close();
             
         // 100超えてたら終わらせる
-        }else if(clickcounter > 100){
+        }else if(followclickcounter > 100){
 
             //トースト更新
-            var message = `You have exceeded ${clickcounter} clicks`;
+            var message = `You have exceeded ${followclickcounter} clicks`;
             window.toast.textContent = message;
             window.toast.style.display = "block";
         }else{
@@ -93,8 +89,8 @@ javascript:(function(){
                     // localStorageに保存
                     localStorage.setItem(currentPage, counter);
 
-                    clickcounter++;
-                    localStorage.setItem('followclickcounter', clickcounter);
+                    followclickcounter++;
+                    localStorage.setItem('followclickcounter', followclickcounter);
                     localStorage.setItem('last_execution_time_follow', currentTime);
                 }
             }
