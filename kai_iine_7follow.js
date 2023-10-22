@@ -1,4 +1,4 @@
-まjavascript:(function(){
+javascript:(function(){
 
     var currentURL = window.location.href;
 
