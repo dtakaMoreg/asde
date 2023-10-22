@@ -9,13 +9,7 @@ javascript:(function(){
         
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
-        
-        alert("0" + buttonElements[0].innerText);
-        alert("1" + buttonElements[1].innerText);
-        alert("2" + buttonElements[2].innerText);
-        alert("3" + buttonElements[3].innerText);
-        alert("4" + buttonElements[4].innerText);
-        
+
         var follow = buttonElements[3];
         if(follow.innerText === "フォローする"){
             follow.click();
