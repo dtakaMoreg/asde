@@ -5,5 +5,7 @@ javascript:(function(){
     //localStorage.removeItem("nextURLNo");
     //localStorage.removeItem("iineClick");
     //localStorage.removeItem("followClick");
-    localStorage.Clear();
+    localStorage.clear();
+    alert("すべてクリア");
+    
 })();
