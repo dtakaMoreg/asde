@@ -47,7 +47,7 @@ javascript:(function(){
         } else {
             // 最後の実行から1時間以内の場合、counterの値を使用
             followclickcounter = localStorage.getItem('followclickcounter') || 0;
-            followclickcounter = parseInt(clickcounter);
+            followclickcounter = parseInt(followclickcounter);
         }
         
         
