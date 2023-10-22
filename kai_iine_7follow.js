@@ -9,9 +9,8 @@
         
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
-           
-        var follow = buttonElements[1];
-        var follow = buttonElements[3];
+        
+        var follow = buttonElements[2];
         if(follow.innerText === "フォローする"){
             follow.click();
             vint++;
@@ -39,7 +38,7 @@
 
         // localStorageから最後の実行時刻を取得
         const currentTime = new Date().getTime();
-        const lastExecutionTime = localStorage.getItem('last_execution_time') || 0;
+        const lastExecutionTime = localStorage.getItem('last_execution_time_follow') || 0;
         
         if (currentTime - parseInt(lastExecutionTime) >= 3600000) {
             // 1時間以上経過した場合、counterを0に設定
@@ -66,7 +65,7 @@
 
         // リンクチェック
         if(links.length <= counter){
-            //alert("max");
+            alert("max");
             window.toast.style.display = "none";
             localStorage.removeItem(currentPage);
             window.close();
@@ -92,7 +91,7 @@
 
                     clickcounter++;
                     localStorage.setItem('followclickcounter', clickcounter);
-                    localStorage.setItem('last_execution_time', currentTime);
+                    localStorage.setItem('last_execution_time_follow', currentTime);
                 }
             }
             
