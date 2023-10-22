@@ -65,7 +65,7 @@ javascript:(function(){
 
         // リンクチェック
         if(links.length <= counter){
-            alert("max");
+            //alert("max");
             window.toast.style.display = "none";
             localStorage.removeItem(currentPage);
             window.close();
