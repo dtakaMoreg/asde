@@ -27,12 +27,12 @@ javascript:(function() {
                 return counts[b] - counts[a];
             });
             
-            // 5回以上重複している要素をtmplst2に格納
+            // 2回以上重複している要素をtmplst2に格納
             var tmplst2 = [];
             for (var i = 0; i < sortedCounts.length; i++) {
                 var key = sortedCounts[i];
-                if (counts[key] >= 5) {
-                    tmplst2.push(Number(key)); // もし数値として格納したい場合
+                if (counts[key] >= 2) {
+                    tmplst2.push(key);
                 }
             }
             
