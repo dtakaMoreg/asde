@@ -53,17 +53,17 @@ javascript:(function() {
         var currentDate = new Date();
 
         // リセット時刻と現在時刻を取得
-        var nextResetTime = parseInt(localStorage.getItem('nextResetTime'), 10) || 0;
+        var nextResetTime = parseInt(localStorage.getItem('nextResetTimeFollow'), 10) || 0;
         var currentTime = currentDate.getTime();
         
         // リセット時刻を過ぎていたらリセット
         if (currentTime >= nextResetTime) {
 
             //ローカルストレージをリセット
-            localStorage.removeItem("nextResetTime");
-            localStorage.removeItem("collectedURLs");
-            localStorage.removeItem("nextURLNo");
-            localStorage.removeItem("iineClick");
+            localStorage.removeItem("nextResetTimeFollow");
+            localStorage.removeItem("collectedFollowURLs");
+            localStorage.removeItem("nextFollowURLNo");
+            localStorage.removeItem("followClick");
             
             // 開始時刻を設定
             var currentHour = currentDate.getHours();
@@ -78,11 +78,11 @@ javascript:(function() {
                 nextTime.setHours(4, 0, 0, 0);
             }
         
-            localStorage.setItem('nextResetTime', nextTime.getTime());
+            localStorage.setItem('nextResetTimeFollow', nextTime.getTime());
         }
 
         // URLを追加
-        var collectedURLs = JSON.parse(localStorage.getItem('collectedURLs')) || [];
+        var collectedURLs = JSON.parse(localStorage.getItem('collectedFollowURLs')) || [];
         var beforecnt = collectedURLs.length;
         collectedURLs.push(...tmplst);
 
@@ -91,7 +91,7 @@ javascript:(function() {
         var aftercnt = collectedURLs.length;
         
         // ローカルストレージに収集したURLを保存
-        localStorage.setItem('collectedURLs', JSON.stringify(collectedURLs));
+        localStorage.setItem('collectedFollowURLs', JSON.stringify(collectedURLs));
 
         alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']([' + beforecnt + ']->[' + aftercnt + '])');
     
