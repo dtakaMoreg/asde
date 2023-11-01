@@ -1,12 +1,27 @@
-まjavascript:(function(){
+javascript:(function(){
 
     var currentURL = window.location.href;
 
+    //トースト
+    if(typeof window.toast === 'undefined'){
+
+        window.toast = document.createElement("div");
+        window.toast.style.cssText = "position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; z-index: 2147483647; font-size: 64px;";
+        window.toast.style.display = "none";
+        document.body.appendChild(window.toast);
+    }
+    
+            
     //roomを開いているなら
     if (currentURL.indexOf('https://room.rakuten.co.jp/') !== -1) {
         var v = localStorage.getItem('iineClick') || 0;
         var vint = parseInt(v);
-        
+
+        //トースト更新
+        var message = `[${vint}]`;
+        window.toast.textContent = message;
+        window.toast.style.display = "block";
+
         //クリック処理
         var buttonElements = document.querySelectorAll("button");
         var like = buttonElements[4].querySelector("div");
@@ -50,15 +65,7 @@
         }
         
         
-        //トースト
-        if(typeof window.toast === 'undefined'){
-        
-            window.toast = document.createElement("div");
-            window.toast.style.cssText = "position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; z-index: 2147483647; font-size: 64px;";
-            window.toast.style.display = "none";
-            document.body.appendChild(window.toast);
-        }
-    
+
     
         var links = document.querySelectorAll('a');
 

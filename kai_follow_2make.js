@@ -32,7 +32,7 @@ javascript:(function() {
             for (var i = 0; i < sortedCounts.length; i++) {
                 var key = sortedCounts[i];
                 if (counts[key] >= 2) {
-                    tmplst2.push(key);
+                    tmplst2.push(Number(key)); // もし数値として格納したい場合
                 }
             }
             
