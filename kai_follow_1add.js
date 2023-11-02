@@ -95,7 +95,7 @@ javascript:(function() {
         // ローカルストレージに収集したURLを保存
         localStorage.setItem('collectedFollowURLs', JSON.stringify(collectedURLs));
 
-        alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']([' + beforecnt + ']->[' + aftercnt + '])');
+        alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']');
     
     }
 
