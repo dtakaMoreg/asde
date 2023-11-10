@@ -46,7 +46,7 @@ javascript:(function() {
             hreft = links[2].getAttribute("href");
             
             var buttons = elements[i].getElementsByTagName('button');
-            follows = buttons[0].innerText;
+            follows = buttons[0].textContent;
             //未フォローの場合格納する
             if (hreft != null && hreft.length > 7 && hreft.includes("/items") && follows === 'フォローする') {
                 tmplst.push('https://room.rakuten.co.jp' + hreft);
