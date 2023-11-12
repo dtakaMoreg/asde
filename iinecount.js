@@ -1,5 +1,5 @@
 javascript:(function(){
     //ローカルストレージをクリップボードに格納
-    var iineCount = localStorage.getItem("iineCount");
-    navigator.clipboard.writeText(iineClick)  
+    var collectedURLs = JSON.parse(localStorage.getItem('collectedURLs')) || [];
+    navigator.clipboard.writeText(collectedURLs.length)  
 })();
