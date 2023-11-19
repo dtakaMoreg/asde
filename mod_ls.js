@@ -3,7 +3,7 @@ javascript:(function() {
     const key = localStorage.key(i);
     const value = localStorage.getItem(key);
 
-    let newValue = prompt(`新しい値を入力してください（キー: ${key}）：`);
+    let newValue = prompt(`新しい値を入力してください（キー: ${key}）：`, value);
 
     // ユーザが新しい値を入力してOKボタンを押した場合
     if (newValue !== null) {
