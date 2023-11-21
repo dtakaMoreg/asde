@@ -28,7 +28,7 @@
             setTimeout(() => {
                 let message = "";
                 const isColorWhite = like.className.includes("color-white");
-                if (!isColorWhite) {
+                if (isColorWhite) {
                     //いいねNG
                     navigator.clipboard.writeText("iineNG");
                 } else {
