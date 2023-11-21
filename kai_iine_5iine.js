@@ -36,14 +36,20 @@
                     vint++;
                     localStorage.setItem('iineClick', vint);
                     navigator.clipboard.writeText("iineOK");
-                }
-                // とじる
-                window.close();
+                }        
             }, 500);
+            
+            setTimeout(function() {
+                // 閉じる
+                window.close();
+            }, 1000);
+            
         } else {
             navigator.clipboard.writeText("iineSkip");
-            // とじる
-            window.close();
+            setTimeout(function() {
+                // 閉じる
+                window.close();
+            }, 500);    
         }
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
