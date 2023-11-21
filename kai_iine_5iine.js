@@ -38,12 +38,12 @@
                     navigator.clipboard.writeText("iineOK");
                 }
                 // とじる
-                //window.close();
+                window.close();
             }, 500);
         } else {
             navigator.clipboard.writeText("iineSkip");
             // とじる
-            //window.close();
+            window.close();
         }
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
