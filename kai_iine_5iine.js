@@ -30,12 +30,12 @@
                 const isColorWhite = like.className.includes("color-white");
                 if (!isColorWhite) {
                     //いいねNG
-                    //navigator.clipboard.writeText("iineNG");
+                    navigator.clipboard.writeText("iineNG");
                 } else {
                     //いいねOK
                     vint++;
                     localStorage.setItem('iineClick', vint);
-                    //navigator.clipboard.writeText("iineOK");
+                    navigator.clipboard.writeText("iineOK");
                 }
                 // とじる
                 window.close();
