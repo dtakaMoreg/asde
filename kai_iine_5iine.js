@@ -41,6 +41,7 @@
                 window.close();
             }, 500);
         } else {
+            navigator.clipboard.writeText("iineSkip");
             // とじる
             window.close();
         }
