@@ -1,19 +1,35 @@
-javascript:(function() {
-  const allText = document.body.innerText;
+javascript:(function(){
+  var elements = document.querySelectorAll('[class^="social-text-area"]');
+  if (elements.length > 0) {
+    var textToCopy = elements[0].textContent || elements[0].innerText;
+    
+    var pageUrl = window.location.href;
 
-  // 日本語のハッシュタグを含む正規表現
-  const hashtagMatches = allText.match(/#[^\s#]+/g);
+    // Find A elements with class name starting with 'link--'
+    var linkElements = document.querySelectorAll('a[class^="link--"]');
+    
+    // Extract and decode URLs from qualifying A elements
+    var linkElementUrls = Array.from(linkElements).map(function(linkElement) {
+      // Decode the URL using a dummy element
+      var dummyElement = document.createElement('div');
+      dummyElement.innerHTML = linkElement.href;
+      return dummyElement.textContent;
+    });
 
-  if (!hashtagMatches) {
-    alert('ハッシュタグが見つかりませんでした。');
-    return;
+    // Combine text, page URL, and qualifying A element URLs
+    var combinedText = 'ページURL@@@' + pageUrl + '\nテキスト@@@"' + textToCopy + '"\nA要素URL@@@' + linkElementUrls.join('\n');
+
+    // Retrieve the existing dictionary from localStorage
+    var storedData = JSON.parse(localStorage.getItem('copiedData')) || {};
+
+    // Add the current page's data to the dictionary
+    storedData[pageUrl] = combinedText;
+
+    // Save the updated dictionary back to localStorage
+    localStorage.setItem('copiedData', JSON.stringify(storedData));
+
+    //alert('テキストとデコードされたURLがlocalStorageに保存されました:\n' + combinedText);
+  } else {
+    alert('対象の要素が見つかりませんでした');
   }
-
-  // 重複を排除してユニークなハッシュタグを収集
-  const uniqueHashtags = [...new Set(hashtagMatches)];
-
-  // Local Storageに格納
-  localStorage.setItem('collectedHashtags', JSON.stringify(uniqueHashtags));
-
-  alert('ハッシュタグを収集し、Local Storageに格納しました。');
 })();
