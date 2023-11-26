@@ -10,10 +10,7 @@ javascript:(function(){
     
     // Extract and decode URLs from qualifying A elements
     var linkElementUrls = Array.from(linkElements).map(function(linkElement) {
-      // Decode the URL using a dummy element
-      var dummyElement = document.createElement('div');
-      dummyElement.innerHTML = linkElement.href;
-      return dummyElement.textContent;
+      return linkElement.href;
     });
 
     // Combine text, page URL, and qualifying A element URLs
