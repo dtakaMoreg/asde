@@ -12,13 +12,13 @@ javascript:(function() {
 
         // クリック対象の要素を取得
         var roomelements = document.querySelectorAll('a[class*="link-image"]');
-
+        navigator.clipboard.writeText("Pending")  ;
        // indexが500以下かつelements.lengthがindexより小さい間、画面を下にスクロール
         while (index <= 422 && roomelements.length < index) {
             window.scrollBy(0, window.innerHeight);
             roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
         }
-        
+        navigator.clipboard.writeText("OK")  ;
         if (index < roomelements.length) {
             // 要素をクリックし、インデックスを更新
             roomelements[index].click();
