@@ -11,11 +11,17 @@ javascript:(function() {
         var index = storedIndex ? parseInt(storedIndex) : 0;
 
         // クリック対象の要素を取得
-        var elements = document.querySelectorAll('a[class*="link-image"]');
+        var roomelements = document.querySelectorAll('a[class*="link-image"]');
 
-        if (index < elements.length) {
+       // indexが500以下かつelements.lengthがindexより小さい間、画面を下にスクロール
+        while (index <= 500 && roomelements.length < index) {
+            window.scrollBy(0, window.innerHeight);
+            roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
+        }
+        
+        if (index < roomelements.length) {
             // 要素をクリックし、インデックスを更新
-            elements[index].click();
+            roomelements[index].click();
             index++;
             localStorage.setItem('bookmarkletIndex', index);
         } else {
