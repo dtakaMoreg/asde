@@ -13,26 +13,31 @@ javascript:(function() {
         // クリック対象の要素を取得
         var roomelements = document.querySelectorAll('a[class*="link-image"]');
         navigator.clipboard.writeText("Pending")  ;
-       // indexが500以下かつelements.lengthがindexより小さい間、画面を下にスクロール
-        while (index <= 422 && roomelements.length <= index) {
-            window.scrollBy(0, window.innerHeight);
-            roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
-            alert('スクロール後 ind:' + index +'ele:'+roomelements.length);
-        }
-        alert('ok ind:' + index +'ele:'+roomelements.length);
-        navigator.clipboard.writeText("OK")  ;
-        if (index < roomelements.length) {
-            // 要素をクリックし、インデックスを更新
-            roomelements[index].click();
-            index++;
-            localStorage.setItem('bookmarkletIndex', index);
 
-            
-        } else {
-            // クリックする要素がない場合はアラート表示し、localStorageからインデックスを削除
-            alert('クリックする要素がもうありません。');
-           // localStorage.removeItem('bookmarkletIndex');
+        // スクロール関数
+        function scrollToNext() {
+            if (index <= 422 && roomelements.length <= index) {
+                window.scrollBy(0, window.innerHeight);
+                elements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
+                setTimeout(scrollToNext, 1000); // 再帰的に1秒ごとにスクロール
+            } else {
+            	alert('ok ind:' + index +'ele:'+roomelements.length);
+        		navigator.clipboard.writeText("OK")  ;
+        
+                if (index < roomelements.length) {
+                    roomelements[index].click();
+                    index++;
+                    localStorage.setItem('bookmarkletIndex', index);
+                } else {
+                    alert('No more elements to click.');
+//                    localStorage.removeItem('bookmarkletIndex');
+                }
+            }
         }
+	
+        // 初回のスクロール呼び出し
+        scrollToNext();
+
     } else {
         // ソーシャルエリアの要素を取得
         var elements = document.querySelectorAll('[class^="social-text-area"]');
@@ -75,3 +80,41 @@ javascript:(function() {
         history.back();
     }
 })();
+
+
+javascript:(function() {
+    var targetSite = 'https://room.rakuten.co.jp/room_f45d756af1/items';
+    var currentSite = window.location.href;
+
+    if (currentSite === targetSite) {
+        var storedIndex = localStorage.getItem('bookmarkletIndex');
+        var index = storedIndex ? parseInt(storedIndex) : 0;
+
+        var elements = document.querySelectorAll('a[class*="link-image"]');
+
+        // スクロール関数
+        function scrollToNext() {
+            if (index <= 500 && elements.length < index) {
+                window.scrollBy(0, window.innerHeight);
+                elements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
+                setTimeout(scrollToNext, 1000); // 再帰的に1秒ごとにスクロール
+            } else {
+                if (index < elements.length) {
+                    elements[index].click();
+                    index++;
+                    localStorage.setItem('bookmarkletIndex', index);
+                } else {
+                    alert('No more elements to click.');
+                    localStorage.removeItem('bookmarkletIndex');
+                }
+            }
+        }
+
+        // 初回のスクロール呼び出し
+        scrollToNext();
+    } else {
+        alert('This bookmarklet is only intended for: ' + targetSite);
+        history.back(); // Go back to the previous page
+    }
+})();
+
