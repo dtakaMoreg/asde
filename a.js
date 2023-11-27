@@ -17,6 +17,7 @@ javascript:(function() {
         while (index <= 422 && roomelements.length < index) {
             window.scrollBy(0, window.innerHeight);
             roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
+            alert('スクロール後 ind:' + index +'ele:'+roomelements.length);
         }
         navigator.clipboard.writeText("OK")  ;
         if (index < roomelements.length) {
