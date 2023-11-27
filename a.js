@@ -19,6 +19,7 @@ javascript:(function() {
             roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
             alert('スクロール後 ind:' + index +'ele:'+roomelements.length);
         }
+        alert('ok ind:' + index +'ele:'+roomelements.length);
         navigator.clipboard.writeText("OK")  ;
         if (index < roomelements.length) {
             // 要素をクリックし、インデックスを更新
