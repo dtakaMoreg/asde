@@ -14,7 +14,7 @@ javascript:(function() {
         var roomelements = document.querySelectorAll('a[class*="link-image"]');
         navigator.clipboard.writeText("Pending")  ;
        // indexが500以下かつelements.lengthがindexより小さい間、画面を下にスクロール
-        while (index <= 422 && roomelements.length < index) {
+        while (index <= 422 && roomelements.length <= index) {
             window.scrollBy(0, window.innerHeight);
             roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
             alert('スクロール後 ind:' + index +'ele:'+roomelements.length);
