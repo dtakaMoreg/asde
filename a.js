@@ -31,7 +31,7 @@ javascript:(function() {
         } else {
             // クリックする要素がない場合はアラート表示し、localStorageからインデックスを削除
             alert('クリックする要素がもうありません。');
-            localStorage.removeItem('bookmarkletIndex');
+           // localStorage.removeItem('bookmarkletIndex');
         }
     } else {
         // ソーシャルエリアの要素を取得
