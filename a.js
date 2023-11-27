@@ -8,7 +8,7 @@ javascript:(function() {
         // localStorageからインデックスを取得
         var storedIndex = localStorage.getItem('bookmarkletIndex');
         // インデックスが存在すればパース、存在しなければ0
-        var index = storedIndex ? parseInt(storedIndex) : 1;
+        var index = storedIndex ? parseInt(storedIndex) : 0;
 
         // クリック対象の要素を取得
         var roomelements = document.querySelectorAll('a[class*="link-image"]');
@@ -21,9 +21,10 @@ javascript:(function() {
         navigator.clipboard.writeText("OK")  ;
         if (index < roomelements.length) {
             // 要素をクリックし、インデックスを更新
+            roomelements[index].click();
             index++;
             localStorage.setItem('bookmarkletIndex', index);
-            roomelements[index-1].click();
+
             
         } else {
             // クリックする要素がない場合はアラート表示し、localStorageからインデックスを削除
