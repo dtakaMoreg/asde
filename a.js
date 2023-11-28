@@ -21,7 +21,7 @@ javascript:(function() {
                 elements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
                 setTimeout(scrollToNext, 1000); // 再帰的に1秒ごとにスクロール
             } else {
-            	alert('ok ind:' + index +'ele:'+roomelements.length);
+            	//alert('ok ind:' + index +'ele:'+roomelements.length);
         		navigator.clipboard.writeText("OK")  ;
         
                 if (index < roomelements.length) {
