@@ -18,7 +18,7 @@ javascript:(function() {
         function scrollToNext() {
             if (index <= 422 && roomelements.length <= index) {
                 window.scrollBy(0, window.innerHeight);
-                elements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
+                roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
                 setTimeout(scrollToNext, 1000); // 再帰的に1秒ごとにスクロール
             } else {
             	//alert('ok ind:' + index +'ele:'+roomelements.length);
