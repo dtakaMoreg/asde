@@ -9,7 +9,7 @@ if (bookmarkShareIconLink) {
   // 2秒待機
   setTimeout(function() {
     // クラス名が "susumeruRoomIcon" の要素を取得
-    var susumeruRoomIcon = document.querySelector('.share-link');
+    var susumeruRoomIcon = document.querySelector('[class*="share-link"]');
 
     // 要素が存在するか確認
     if (susumeruRoomIcon) {
