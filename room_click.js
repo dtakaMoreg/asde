@@ -14,7 +14,7 @@ if (bookmarkShareIconLink) {
     // 要素が存在するか確認
     if (susumeruRoomIcon) {
       // 要素をクリック
-      susumeruRoomIcon[0].click();
+      susumeruRoomIcon.click();
     } else {
       console.log('susumeruRoomIconの要素が見つかりません');
     }
