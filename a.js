@@ -1,32 +1,82 @@
-javascript:(function(){
-  var elements = document.querySelectorAll('[class^="social-text-area"]');
-  if (elements.length > 0) {
-    var textToCopy = elements[0].textContent || elements[0].innerText;
-    
-    var pageUrl = window.location.href;
+javascript:(function() {
+    // ターゲットサイトのURL
+    var targetSite = 'https://room.rakuten.co.jp/room_f45d756af1/items';
+    // 現在のページのURL
+    var currentSite = window.location.href;
 
-    // Find A elements with class name starting with 'link--'
-    var linkElements = document.querySelectorAll('a[class^="link--"]');
-    
-    // Extract and decode URLs from qualifying A elements
-    var linkElementUrls = Array.from(linkElements).map(function(linkElement) {
-      return linkElement.href;
-    });
+    if (currentSite === targetSite) {
+        // localStorageからインデックスを取得
+        var storedIndex = localStorage.getItem('bookmarkletIndex');
+        // インデックスが存在すればパース、存在しなければ0
+        var index = storedIndex ? parseInt(storedIndex) : 0;
 
-    // Combine text, page URL, and qualifying A element URLs
-    var combinedText = 'ページURL@@@' + pageUrl + '\nテキスト@@@"' + textToCopy + '"\nA要素URL@@@' + linkElementUrls.join('\n');
+        // クリック対象の要素を取得
+        var roomelements = document.querySelectorAll('a[class*="link-image"]');
+        navigator.clipboard.writeText("Pending")  ;
 
-    // Retrieve the existing dictionary from localStorage
-    var storedData = JSON.parse(localStorage.getItem('copiedData')) || {};
+        // スクロール関数
+        function scrollToNext() {
+            if (index <= 422 && roomelements.length <= index) {
+                window.scrollBy(0, window.innerHeight);
+                roomelements = document.querySelectorAll('a[class*="link-image"]'); // スクロール後に要素を再取得
+                setTimeout(scrollToNext, 1000); // 再帰的に1秒ごとにスクロール
+            } else {
+            	//alert('ok ind:' + index +'ele:'+roomelements.length);
+        		navigator.clipboard.writeText("OK")  ;
+        
+                if (index < roomelements.length) {
+                    roomelements[index].click();
+                    index++;
+                    localStorage.setItem('bookmarkletIndex', index);
+                } else {
+                    alert('No more elements to click.');
+//                    localStorage.removeItem('bookmarkletIndex');
+                }
+            }
+        }
+	
+        // 初回のスクロール呼び出し
+        scrollToNext();
 
-    // Add the current page's data to the dictionary
-    storedData[pageUrl] = combinedText;
+    } else {
+        // ソーシャルエリアの要素を取得
+        var elements = document.querySelectorAll('[class^="social-text-area"]');
+        
+        if (elements.length > 0) {
+            // コピーするテキストを取得
+            var textToCopy = elements[0].textContent || elements[0].innerText;
 
-    // Save the updated dictionary back to localStorage
-    localStorage.setItem('copiedData', JSON.stringify(storedData));
+            // ページのURLを取得
+            var pageUrl = window.location.href;
 
-    //alert('テキストとデコードされたURLがlocalStorageに保存されました:\n' + combinedText);
-  } else {
-    alert('対象の要素が見つかりませんでした');
-  }
+            // 'link--'で始まるクラス名を持つA要素を取得
+            var linkElements = document.querySelectorAll('a[class^="link--"]');
+            
+            // 該当するA要素からURLを抽出してデコード
+            var linkElementUrls = Array.from(linkElements).map(function(linkElement) {
+                return linkElement.href;
+            });
+
+            // テキスト、ページURL、A要素URLを結合
+            var combinedText = 'ページURL@@@' + pageUrl + '\nテキスト@@@"' + textToCopy + '"\nA要素URL@@@' + linkElementUrls.join('\n');
+
+            // localStorageから既存のデータを取得
+            var storedData = JSON.parse(localStorage.getItem('copiedData')) || {};
+
+            // 現在のページのデータをデータに追加
+            storedData[pageUrl] = combinedText;
+
+            // 更新されたデータをlocalStorageに保存
+            localStorage.setItem('copiedData', JSON.stringify(storedData));
+
+            // アラート表示（コメントアウトされていた）
+            // alert('テキストとデコードされたURLがlocalStorageに保存されました:\n' + combinedText);
+        } else {
+            // 対象の要素が見つからない場合はアラート表示
+            alert('対象の要素が見つかりませんでした');
+        }
+
+        // 一つ前のページに戻る
+        history.back();
+    }
 })();
