@@ -1,12 +1,10 @@
 javascript:(function() {
 
-	// localStorageは使わない
-	
     // localStorageからfavoriteIndexを取得
-    //let favoriteIndexString = localStorage.getItem('favoriteIndex');
+    let favoriteIndexString = localStorage.getItem('favoriteIndex');
 
     // favoriteIndexが存在しない、または値がnull/undefinedの場合、0を設定
-    //let favoriteIndex = favoriteIndexString ? parseInt(favoriteIndexString, 10) : 0;
+    let favoriteIndex = favoriteIndexString ? parseInt(favoriteIndexString, 10) : 0;
 
     // "container" を含むクラス名を持つ全ての div 要素を取得
     let containerElements = document.querySelectorAll('img[class*="image"]');
@@ -14,8 +12,7 @@ javascript:(function() {
     // 位置を特定
     // indexは0から
     // 
-    //let index = Math.floor(favoriteIndex / 2);
-    let index = 0;
+    let index = Math.floor(favoriteIndex / 2);
     let offset = 0;
     
     if (favoriteIndex % 2 === 0){
@@ -38,7 +35,7 @@ javascript:(function() {
         });
 
         // localStorageのfavoriteIndexを更新
-        //localStorage.setItem('favoriteIndex', favoriteIndex + 1);
+        localStorage.setItem('favoriteIndex', favoriteIndex + 1);
     } else {
         alert('Element not found at index:', num);
     }
