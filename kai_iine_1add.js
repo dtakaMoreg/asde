@@ -5,6 +5,8 @@ javascript:(function() {
     var fileName ="";
     var scroll_count= 0;
     
+    navigator.clipboard.writeText("start")  
+
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
     if(userList == null){
@@ -94,7 +96,7 @@ javascript:(function() {
         localStorage.setItem('collectedURLs', JSON.stringify(collectedURLs));
 
         alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']([' + beforecnt + ']->[' + aftercnt + '])');
-    
+        navigator.clipboard.writeText("end")  
     }
 
 })();
