@@ -5,7 +5,7 @@ javascript:(function() {
     var fileName ="";
     var scroll_count= 0;
     
-    navigator.clipboard.writeText("start");  
+    navigator.clipboard.writeText("start2");  
 
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
@@ -95,7 +95,7 @@ javascript:(function() {
         // ローカルストレージに収集したURLを保存
         localStorage.setItem('collectedURLs', JSON.stringify(collectedURLs));
 
-        navigator.clipboard.writeText("end");
+        navigator.clipboard.writeText("end222");
         alert('URLを収集しました: current[' + tmplst.length + '] total[' + collectedURLs.length + ']([' + beforecnt + ']->[' + aftercnt + '])');
           
     }
