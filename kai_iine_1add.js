@@ -5,7 +5,7 @@ javascript:(function() {
     var fileName ="";
     var scroll_count= 0;
     
-    //navigator.clipboard.writeText("start");  
+    navigator.clipboard.writeText("start");  
 
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
