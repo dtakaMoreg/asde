@@ -10,7 +10,8 @@ javascript:(function(){
   .catch((error) => {
     // エラーが発生した場合の処理
     console.error('クリップボードへのコピー中にエラーが発生しました:', error);
-    alert('クリップボードへのコピー中にエラーが発生しました');
+    alert('クリップボードへのコピー中にエラーが発生しました\nエラー内容: ' + error.message);
   });
+
 
 })();
