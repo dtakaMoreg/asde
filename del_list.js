@@ -11,12 +11,12 @@ javascript:(function() {
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
     if(userList == null){
-        userList = document.getElementById('ng-app');
+       userList = document.getElementById('ng-app');
     }
     
     // スクロール関数
     function scrollToBottom() {
-        userList.scrollTop = userList.scrollHeight;
+ //       userList.scrollTop = userList.scrollHeight;
     }
 
     // スクロールが終了するまでスクロールを続けます
