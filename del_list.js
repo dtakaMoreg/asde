@@ -16,7 +16,7 @@ javascript:(function() {
     
     // スクロール関数
     function scrollToBottom() {
- //       userList.scrollTop = userList.scrollHeight;
+        userList.scrollTop = userList.scrollHeight;
     }
 
     // スクロールが終了するまでスクロールを続けます
@@ -37,12 +37,11 @@ javascript:(function() {
             scroll_count = 0;
         }
         
-    }, 500); // 500msごとにスクロール
+    }, 700); // 500msごとにスクロール
 
 
     // リンク要素を取得
     function getRoomDelLink() {
-        debugger
         var links = document.getElementsByTagName('a');
         for (var i = 0; i < links.length; i++) {
             hreft = links[i].getAttribute("href");
