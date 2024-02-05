@@ -2,7 +2,7 @@ javascript:(function(){
 
     //変数初期化
     if(typeof window.counter === 'undefined'){
-        currentDelPage = localStorage.getItem(currentDelPage) || 0;
+        currentDelPage = localStorage.getItem('currentDelPage') || 0;
         window.counter = currentDelPage;
         window.remove  = 0;
     }
