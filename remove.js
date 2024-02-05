@@ -31,7 +31,7 @@ javascript:(function(){
             s = roomRankElements[0].getAttribute("class").indexOf("room-rank") + 10
             const rank = roomRankElements[0].getAttribute("class")[s]
             
-            if(rank === "c" || rank === "d" || rank === "e"){
+            if(rank === "d" || rank === "e"){
                 const btns = elements[i].getElementsByTagName('button');
                 btns[0].click();
                 window.counter = i+1;
