@@ -61,7 +61,7 @@ javascript:(function(){
     window.toast.textContent = message;
     window.toast.style.display = "block";
     
-    localStorage.setItem(currentDelPage, i);
+    localStorage.setItem('currentDelPage', i);
     
     // メインリストのz-indexを下げる
     bodycont.style.zIndex -= 1
