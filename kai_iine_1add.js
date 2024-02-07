@@ -71,13 +71,13 @@ javascript:(function() {
             var currentHour = currentDate.getHours();
             var nextTime = new Date(currentDate);
             
-            // 当日の0:00～3:59なら当日の4時に設定
-            if (currentHour >= 0 && currentHour < 4) {
-                nextTime.setHours(4, 0, 0, 0);
-            // そうでなければ次の日の4時に設定
+            // 当日の0:00～9:59なら当日の10時に設定
+            if (currentHour >= 0 && currentHour < 10) {
+                nextTime.setHours(10, 0, 0, 0);
+            // そうでなければ次の日の10時に設定
             } else {
                 nextTime.setDate(currentDate.getDate() + 1);
-                nextTime.setHours(4, 0, 0, 0);
+                nextTime.setHours(10, 0, 0, 0);
             }
         
             localStorage.setItem('nextResetTime', nextTime.getTime());
