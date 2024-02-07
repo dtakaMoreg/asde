@@ -2,7 +2,7 @@ javascript:(function(){
 
     //変数初期化
     if(typeof window.counter === 'undefined'){
-        currentDelPage = localStorage.getItem(currentDelPage) || 0;
+        currentDelPage = localStorage.getItem('currentDelPage') || 0;
         window.counter = currentDelPage;
         window.remove  = 0;
     }
@@ -61,7 +61,7 @@ javascript:(function(){
     window.toast.textContent = message;
     window.toast.style.display = "block";
     
-    localStorage.setItem(currentDelPage, i);
+    localStorage.setItem('currentDelPage', i);
     
     // メインリストのz-indexを下げる
     bodycont.style.zIndex -= 1
