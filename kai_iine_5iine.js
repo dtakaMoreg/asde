@@ -9,6 +9,26 @@
         document.body.appendChild(window.toast);
     }
 
+    // いいねしている数を取得
+    function iinenum(input) {
+        // カンマを削除
+        input = input.replace(/,/g, '');
+        // KやMが含まれているかどうかを正規表現でチェック
+        var regex = /(\d+\.?\d*)([KM])/i;
+        var match = input.match(regex);
+        if (match) {
+            var numericPart = parseFloat(match[1]);
+            var suffix = match[2].toUpperCase();
+            if (suffix === 'K') {
+                return numericPart * 1000;
+            } else if (suffix === 'M') {
+                return numericPart * 1000000;
+            }
+        }
+        // KやMが含まれていない場合、そのまま数値に変換
+        return parseFloat(input);
+    }
+
     // roomを開いているなら
     if (currentURL.indexOf('https://room.rakuten.co.jp/') !== -1) {
         var v = localStorage.getItem('iineClick') || 0;
@@ -22,7 +42,10 @@
         // クリック処理
         var buttonElements = document.querySelectorAll("button");
         var like = buttonElements[4].querySelector("div");
-        if (like.className.includes("color-white")) {
+        var iinecnt = document.getElementsByTagName("span")[11].innerText;
+        var iinenum = iinenum(iinecnt);
+        
+        if ((like.className.includes("color-white")) && (iinenum >= 10000)) {
             like.click();
 
             setTimeout(() => {
