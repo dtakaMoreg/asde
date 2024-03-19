@@ -38,7 +38,7 @@ javascript:(function() {
             //alert('ダウンロードが完了しました [' + (parseInt(nextinfo)+1) + ']->[' + collectedURLs.length + ']');
             
             //最後のNoを覚えておく
-            localStorage.setItem('nextURLNo', collectedURLs.length);
+            //localStorage.setItem('nextURLNo', collectedURLs.length);
         } else {
             alert('追加で作成するリストはありません。 collectedURLs[' + collectedURLs.length + ']');
         }
@@ -47,7 +47,7 @@ javascript:(function() {
 
     // ダウンロードを開始します
     // 前回の続きから
-    nextURLNostr = localStorage.getItem('nextURLNo') || 0;
+    nextURLNostr = 0;//localStorage.getItem('nextURLNo') || 0;
     nextURLNoInt = parseInt(nextURLNostr)
     startDownload(nextURLNoInt);
 
