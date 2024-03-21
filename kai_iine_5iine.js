@@ -45,7 +45,7 @@
         var iinecnt = document.getElementsByTagName("span")[11].innerText;
         var iinenum = iinenum(iinecnt);
         
-        if ((like.className.includes("color-white")) && (iinenum >= 10000)) {
+        if ((like.className.includes("color-white")) && (iinenum >= 30000)) {
             like.click();
 
             setTimeout(() => {
