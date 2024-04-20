@@ -134,5 +134,10 @@
             window.toast.textContent = message;
             window.toast.style.display = "block";
         }
+        
+    //ほかのページだったら中断
+    }else{
+        navigator.clipboard.writeText("iinePageNG");
     }
+    
 })();
