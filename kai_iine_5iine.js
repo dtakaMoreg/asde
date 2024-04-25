@@ -40,7 +40,7 @@
         // window.toast.style.display = "block";
 
         // クリック処理
-        var buttonElements = document.querySelectorAll("button");
+        
         var iinecnt = document.getElementsByTagName("span")[11].innerText;
         var iinenum = iinenum(iinecnt);
         
@@ -50,9 +50,11 @@
         let like = null;
         let i;
         let ind;
+        let buttonElements;
         for(i=0 ; i<5 ; i++){
-            alert(buttonElements.length);
-            ind = 3 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,23,4,24..
+            buttonElements = document.querySelectorAll("button");
+            ind = 3 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,13,4,14..
+
             if (buttonElements[ind].querySelector("div").className.includes("color-white")) {
                 like = buttonElements[ind].querySelector("div");
                 break;
