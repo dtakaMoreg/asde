@@ -44,14 +44,16 @@
         var iinecnt = document.getElementsByTagName("span")[11].innerText;
         var iinenum = iinenum(iinecnt);
         
-        let like = null;
+        
 
         // いいねできそうな位置をチェック
-        for(let i=0 ; i<5 ; i++){
-            let ind = 3 + Math.floor(i / 2) + (i % 2) * 20; //いいねの位置が3,23,4,24..
-            let like2 = buttonElements[ind].querySelector("div");
-            if (like2.className.includes("color-white")) {
-                like = like2
+        let like = null;
+        let i;
+        let ind;
+        for(i=0 ; i<5 ; i++){
+            ind = 3 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,23,4,24..
+            if (buttonElements[ind].querySelector("div").className.includes("color-white")) {
+                like = buttonElements[ind].querySelector("div");
                 break;
             }
         }
