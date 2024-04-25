@@ -33,7 +33,7 @@ javascript:(function(){
             const rank = roomRankElements[0].getAttribute("class")[s]
             
             if(rank === "a" || rank === "b" || rank === "c" | rank === "d" || rank === "e"){
-            debugger
+            
                 const btns = elements[i].getElementsByTagName('button');
                 btns[0].click();
                 window.counter = i+1;
