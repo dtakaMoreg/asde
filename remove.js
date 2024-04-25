@@ -23,7 +23,7 @@ javascript:(function(){
     
     const elements = document.querySelectorAll('[class*="profile-wrapper"]');
     
-    var stnum = window.counter;
+    var stnum = 0;window.counter;
     var cnt = 0;
     var i;
     for(i=stnum;i<elements.length;i++){
@@ -32,7 +32,8 @@ javascript:(function(){
             s = roomRankElements[0].getAttribute("class").indexOf("room-rank") + 10
             const rank = roomRankElements[0].getAttribute("class")[s]
             
-            //if(rank === "d" || rank === "e"){
+            if(rank === "a" || rank === "b" || rank === "c" | rank === "d" || rank === "e"){
+            debugger
                 const btns = elements[i].getElementsByTagName('button');
                 btns[0].click();
                 window.counter = i+1;
@@ -41,7 +42,7 @@ javascript:(function(){
                 if(cnt>=6){
                     break;
                 }
-            //}
+            }
         }
     }
 

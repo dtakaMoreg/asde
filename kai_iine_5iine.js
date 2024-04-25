@@ -1,4 +1,4 @@
-(function() {
+(async function() {
     var currentURL = window.location.href;
 
     // トースト
@@ -29,51 +29,61 @@
         return parseFloat(input);
     }
 
+    // wait
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     // roomを開いているなら
     if (currentURL.indexOf('https://room.rakuten.co.jp/') !== -1) {
         var v = localStorage.getItem('iineClick') || 0;
         var vint = parseInt(v);
-
-        // トースト更新
-        // var message = `[${vint}]`;
-        // window.toast.textContent = message;
-        // window.toast.style.display = "block";
+        let result = "";
 
         // クリック処理
         var buttonElements = document.querySelectorAll("button");
-        var like = buttonElements[4].querySelector("div");
         var iinecnt = document.getElementsByTagName("span")[11].innerText;
         var iinenum = iinenum(iinecnt);
         
-        if ((like.className.includes("color-white")) && (iinenum >= 30000)) {
-            like.click();
+        // いいねをしている人なら
+        result = "iineSkip";
+        if (iinenum >= 30000) {
 
-            setTimeout(() => {
-                let message = "";
-                const isColorWhite = like.className.includes("color-white");
-                if (isColorWhite) {
-                    //いいねNG
-                    navigator.clipboard.writeText("iineNG");
-                } else {
-                    //いいねOK
-                    vint++;
-                    localStorage.setItem('iineClick', vint);
-                    navigator.clipboard.writeText("iineOK");
-                }        
-            }, 500);
-            
-            setTimeout(function() {
-                // 閉じる
-                window.close();
-            }, 1000);
-            
-        } else {
-            navigator.clipboard.writeText("iineSkip");
-            setTimeout(function() {
-                // 閉じる
-                window.close();
-            }, 500);    
+            //最大5つまで
+            for(let i=0 ; i<5 ; i++){
+                let ind = 3 + Math.floor(i / 2) + (i % 2) * 20; //いいねの位置が3,23,4,24..
+                var like = buttonElements[ind].querySelector("div");
+
+                if (like.className.includes("color-white")) {
+                    like.click();
+
+                    wait(500);
+
+                    const isColorWhite = like.className.includes("color-white");
+                    if (isColorWhite) {
+                        //いいねNG
+                        result = "iineNG";
+                    } else {
+                        //いいねOK
+                        vint++;
+                        localStorage.setItem('iineClick', vint);
+
+                        result = "iineOK";
+                                
+                    }
+                    break;
+                }
+            }   
         }
+
+        // クリップボード更新
+        navigator.clipboard.writeText(result);
+        wait(500);
+        
+        // 閉じる
+        window.close();
+            
+    
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
 
