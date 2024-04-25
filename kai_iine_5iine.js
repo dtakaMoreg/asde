@@ -41,15 +41,25 @@
 
         // クリック処理
         var buttonElements = document.querySelectorAll("button");
-        var like = buttonElements[4].querySelector("div");
         var iinecnt = document.getElementsByTagName("span")[11].innerText;
         var iinenum = iinenum(iinecnt);
         
-        if ((like.className.includes("color-white")) && (iinenum >= 30000)) {
+        let like = null;
+
+        // いいねできそうな位置をチェック
+        for(let i=0 ; i<5 ; i++){
+            let ind = 3 + Math.floor(i / 2) + (i % 2) * 20; //いいねの位置が3,23,4,24..
+            let like2 = buttonElements[ind].querySelector("div");
+            if (like2.className.includes("color-white")) {
+                like = like2
+                break;
+            }
+        }
+
+        if ((like !== null) && (iinenum >= 30000)) {
             like.click();
 
             setTimeout(() => {
-                let message = "";
                 const isColorWhite = like.className.includes("color-white");
                 if (isColorWhite) {
                     //いいねNG
