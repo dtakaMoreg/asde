@@ -50,14 +50,19 @@
         let like = null;
         let i;
         let ind;
+        let tmplike;
         let buttonElements;
         for(i=0 ; i<5 ; i++){
             buttonElements = document.querySelectorAll("button");
             ind = 3 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,13,4,14..
-
-            if (buttonElements[ind].querySelector("div").className.includes("color-white")) {
-                like = buttonElements[ind].querySelector("div");
-                break;
+            tmplike = buttonElements[ind].querySelector("div");
+            if(tmplike === null){
+                alert("null");
+            }else{
+                if (tmplike.className.includes("color-white")) {
+                    like = tmplike;
+                    break;
+                }
             }
         }
 
