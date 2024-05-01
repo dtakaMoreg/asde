@@ -85,7 +85,13 @@
             }, 1000);
             
         } else {
-            navigator.clipboard.writeText("iineSkip");
+            let reason = "";
+            if (iinenum < 30000) {
+                reason = "too few like"
+            }else{
+                reason = "no iine item"
+            }
+            navigator.clipboard.writeText("iineSkip:" + reason);
             setTimeout(function() {
                 // 閉じる
                 window.close();
@@ -151,5 +157,9 @@
             window.toast.textContent = message;
             window.toast.style.display = "block";
         }
+
+    // どちらのページも開けてなければ
+    } else {
+        navigator.clipboard.writeText("iinePageNG");
     }
 })();
