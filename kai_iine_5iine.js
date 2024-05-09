@@ -39,6 +39,7 @@
         // window.toast.textContent = message;
         // window.toast.style.display = "block";
 
+        
         // クリック処理
         
         var iinecnt = document.getElementsByTagName("span")[11].innerText;
@@ -75,12 +76,12 @@
                 const isColorWhite = like.className.includes("color-white");
                 if (isColorWhite) {
                     //いいねNG
-                    navigator.clipboard.writeText("iineNG");
+                    navigator.clipboard.writeText("iineNG:"+currentURL);
                 } else {
                     //いいねOK
                     vint++;
                     localStorage.setItem('iineClick', vint);
-                    navigator.clipboard.writeText("iineOK");
+                    navigator.clipboard.writeText("iineOK:"+currentURL);
                 }        
             }, 500);
             
@@ -96,7 +97,7 @@
             }else{
                 reason = "no iine item"
             }
-            navigator.clipboard.writeText("iineSkip:" + reason);
+            navigator.clipboard.writeText("iineSkip:" + reason + ":" + currentURL);
             setTimeout(function() {
                 // 閉じる
                 window.close();
@@ -144,6 +145,7 @@
 
             for (var i = 0; i < 1; i++) {
                 if (links.length > counter) {
+
                     newtab[i] = window.open(links[counter], '_blank');
                     links[counter].textContent = "[done] " + links[counter].textContent
                     counter++;
