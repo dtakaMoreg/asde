@@ -39,6 +39,8 @@
         // window.toast.textContent = message;
         // window.toast.style.display = "block";
 
+        //クリップボードを空にする
+        navigator.clipboard.writeText("")
         
         // クリック処理
         
