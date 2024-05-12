@@ -170,5 +170,10 @@
     // どちらのページも開けてなければ
     } else {
         navigator.clipboard.writeText("iinePageNG");
+
+        setTimeout(function() {
+            // 閉じる
+            window.close();
+        }, 1000);
     }
 })();
