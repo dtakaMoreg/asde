@@ -10,24 +10,35 @@
     }
 
     // いいねしている数を取得
-    function iinenum(input) {
+    function iinestr2num(input) {
+        if (typeof input !== 'string') {
+            return 0;
+        }
+    
         // カンマを削除
         input = input.replace(/,/g, '');
+    
         // KやMが含まれているかどうかを正規表現でチェック
-        var regex = /(\d+\.?\d*)([KM])/i;
+        var regex = /^(\d+\.?\d*)([KM])?$/i;
         var match = input.match(regex);
+    
         if (match) {
             var numericPart = parseFloat(match[1]);
-            var suffix = match[2].toUpperCase();
+            var suffix = match[2] ? match[2].toUpperCase() : '';
+    
             if (suffix === 'K') {
                 return numericPart * 1000;
             } else if (suffix === 'M') {
                 return numericPart * 1000000;
+            } else {
+                return numericPart;
             }
         }
-        // KやMが含まれていない場合、そのまま数値に変換
-        return parseFloat(input);
+    
+        // 入力が無効な場合
+        return 0;
     }
+    
 
     // roomを開いているなら
     if (currentURL.indexOf('https://room.rakuten.co.jp/') !== -1) {
@@ -44,29 +55,26 @@
         
         // クリック処理
         
-        var iinecnt = document.getElementsByTagName("span")[11].innerText;
-        var iinenum = iinenum(iinecnt);
+        var spans = document.getElementsByTagName("span");
+        var iinecnt = spans.length > 11 ? spans[11].innerText : "0";
+        var iinenum = iinestr2num(iinecnt);
         
         
-
         // いいねできそうな位置をチェック
         let like = null;
-        let i;
-        let ind;
-        let tmplike;
         let buttonElements = document.querySelectorAll("button");
-        for(i=0 ; i<5 ; i++){
-            ind = 4 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,13,4,14..
-            if(buttonElements.length > ind){
-                tmplike = buttonElements[ind].querySelector("div");
-                if(tmplike !== null){
-                    if (tmplike.className.includes("color-white")) {
-                        like = tmplike;
-                        break;
-                    }
-                }
-            }else{
+        for(let i=0 ; i<5 ; i++){
+            const ind = 4 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,13,4,14..
+            
+            if(ind >= buttonElements.length){
                 loge("no item");
+                break;
+            }
+            
+            const tmplike = buttonElements[ind].querySelector("div");
+            
+            if(tmplike && tmplike.className.includes("color-white")) {
+                like = tmplike;
                 break;
             }
         }
