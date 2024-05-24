@@ -107,11 +107,15 @@
             }else{
                 reason = "no iine item"
             }
-            navigator.clipboard.writeText("iineSkip:" + reason + ":" + currentURL);
+
+            setTimeout(() => {
+                navigator.clipboard.writeText("iineSkip:" + reason + ":" + currentURL);
+            }, 500);
+
             setTimeout(function() {
                 // 閉じる
                 window.close();
-            }, 500);    
+            }, 1000);    
         }
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
@@ -177,11 +181,13 @@
 
     // どちらのページも開けてなければ
     } else {
-        navigator.clipboard.writeText("iinePageNG");
+        setTimeout(() => {
+            navigator.clipboard.writeText("iinePageNG");
+        }, 500);
 
         setTimeout(function() {
             // 閉じる
             window.close();
-        }, 1000);
+        }, 1000);    
     }
 })();
