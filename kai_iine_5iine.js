@@ -67,7 +67,6 @@
             const ind = 4 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,13,4,14..
             
             if(ind >= buttonElements.length){
-                loge("no item");
                 break;
             }
             
@@ -79,44 +78,48 @@
             }
         }
 
+        let clipboardText = "";
         if ((like !== null) && (iinenum >= 30000)) {
             like.click();
-
+        
             setTimeout(() => {
                 const isColorWhite = like.className.includes("color-white");
                 if (isColorWhite) {
-                    //いいねNG
-                    navigator.clipboard.writeText("iineNG:"+currentURL);
+                    clipboardText = "iineNG:" + currentURL;
                 } else {
-                    //いいねOK
                     vint++;
                     localStorage.setItem('iineClick', vint);
-                    navigator.clipboard.writeText("iineOK:"+currentURL);
-                }        
+                    clipboardText = "iineOK:" + currentURL;
+                }
+                
+                navigator.clipboard.writeText(clipboardText).then(() => {
+                    setTimeout(function() {
+                        window.close();
+                    }, 500);
+                }).catch(err => {
+                    //loge("Failed to write to clipboard: " + err);
+                    setTimeout(function() {
+                        window.close();
+                    }, 500);
+                });
+                
             }, 500);
-            
-            setTimeout(function() {
-                // 閉じる
-                window.close();
-            }, 1000);
-            
         } else {
-            let reason = "";
-            if (iinenum < 30000) {
-                reason = "too few like"
-            }else{
-                reason = "no iine item"
-            }
-
-            setTimeout(() => {
-                navigator.clipboard.writeText("iineSkip:" + reason + ":" + currentURL);
-            }, 500);
-
-            setTimeout(function() {
-                // 閉じる
-                window.close();
-            }, 1000);    
+            let reason = iinenum < 30000 ? "too few like" : "no iine item";        
+            clipboardText = "iineSkip:" + reason + ":" + currentURL;
+        
+            navigator.clipboard.writeText(clipboardText).then(() => {
+                setTimeout(function() {
+                    window.close();
+                }, 500);
+            }).catch(err => {
+                //loge("Failed to write to clipboard: " + err);
+                setTimeout(function() {
+                    window.close();
+                }, 500);
+            });
         }
+
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
 
