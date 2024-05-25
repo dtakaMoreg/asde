@@ -1,4 +1,8 @@
 (function() {
+    
+    //debug
+    navigator.clipboard.writeText("iine5 start");
+
     var currentURL = window.location.href;
 
     // トースト
@@ -50,8 +54,9 @@
         // window.toast.textContent = message;
         // window.toast.style.display = "block";
 
-        //クリップボードを空にする
-        navigator.clipboard.writeText("")
+        //debug
+        navigator.clipboard.writeText("iine5 room");
+
         
         // クリック処理
         
@@ -132,6 +137,8 @@
 
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
+
+        navigator.clipboard.writeText("iine5 list");
 
         // 現在のページのファイル名を取得
         const currentPage = window.location.pathname.split('/').pop();
