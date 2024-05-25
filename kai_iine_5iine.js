@@ -130,16 +130,13 @@
         var counter = localStorage.getItem(currentPage);
 
         // カウンターがnull（まだ設定されていない）場合、0に設定
-        if (counter === null) {
-            counter = 0;
-        } else {
-            counter = parseInt(counter);
-        }
+        counter = counter === null ? 0 : parseInt(counter);
 
         // localStorageから最後の実行時刻を取得
         const currentTime = new Date().getTime();
         const lastExecutionTime = localStorage.getItem('last_execution_time') || 0;
 
+        let clickcounter;
         if (currentTime - parseInt(lastExecutionTime) >= 3600000) {
             // 1時間以上経過した場合、counterを0に設定
             clickcounter = 0;
@@ -158,29 +155,31 @@
             localStorage.removeItem(currentPage);
             window.close();
         } else {
-            var newtab = [];
+            
+            if (links.length > counter) {
 
-            for (var i = 0; i < 1; i++) {
-                if (links.length > counter) {
+                let newtab = window.open(links[counter], '_blank');
+                links[counter].textContent = "[done] " + links[counter].textContent
 
-                    newtab[i] = window.open(links[counter], '_blank');
-                    links[counter].textContent = "[done] " + links[counter].textContent
-                    counter++;
+                // クリップボード更新
+                navigator.clipboard.writeText("open:" + links[counter]);
 
-                    // localStorageに保存
-                    localStorage.setItem(currentPage, counter);
+                counter++;
 
-                    clickcounter++;
-                    localStorage.setItem('clickcounter', clickcounter);
-                    localStorage.setItem('last_execution_time', currentTime);
-                }
+                // localStorageに保存
+                localStorage.setItem(currentPage, counter);
+
+                clickcounter++;
+                localStorage.setItem('clickcounter', clickcounter);
+                localStorage.setItem('last_execution_time', currentTime);
             }
-
-            // トースト更新
-            var message = counter + "/" + links.length;
-            window.toast.textContent = message;
-            window.toast.style.display = "block";
         }
+
+        // トースト更新
+        var message = counter + "/" + links.length;
+        window.toast.textContent = message;
+        window.toast.style.display = "block";
+
 
     // どちらのページも開けてなければ
     } else {
