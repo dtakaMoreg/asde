@@ -64,7 +64,7 @@
         let like = null;
         let buttonElements = document.querySelectorAll("button");
         for(let i=0 ; i<5 ; i++){
-            const ind = 4 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が3,13,4,14..
+            const ind = 4 + Math.floor(i / 2) + (i % 2) * 10; //いいねの位置が4,14,5,15..
             
             if(ind >= buttonElements.length){
                 break;
@@ -184,13 +184,19 @@
 
     // どちらのページも開けてなければ
     } else {
-        setTimeout(() => {
-            navigator.clipboard.writeText("iinePageNG");
-        }, 500);
-
-        setTimeout(function() {
-            // 閉じる
-            window.close();
-        }, 1000);    
+        navigator.clipboard.writeText("iinePageNG")
+        .then(() => {
+            setTimeout(function() {
+                // 閉じる
+                window.close();
+            }, 500);
+        })
+        .catch(err => {
+            //console.error("Failed to write to clipboard: " + err);
+            setTimeout(function() {
+                // 閉じる
+                window.close();
+            }, 500);
+        });
     }
 })();
