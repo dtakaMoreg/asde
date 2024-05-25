@@ -79,6 +79,17 @@
         }
 
         let clipboardText = "";
+
+        function retryClipboardWrite(text, retryCount = 1) {
+            return navigator.clipboard.writeText(text).catch(err => {
+                if (retryCount > 0) {
+                    return retryClipboardWrite(text, retryCount - 1);
+                } else {
+                    throw err;
+                }
+            });
+        }
+        
         if ((like !== null) && (iinenum >= 30000)) {
             like.click();
         
@@ -92,12 +103,11 @@
                     clipboardText = "iineOK:" + currentURL;
                 }
                 
-                navigator.clipboard.writeText(clipboardText).then(() => {
+                retryClipboardWrite(clipboardText).then(() => {
                     setTimeout(function() {
                         window.close();
                     }, 500);
                 }).catch(err => {
-                    //loge("Failed to write to clipboard: " + err);
                     setTimeout(function() {
                         window.close();
                     }, 500);
@@ -105,20 +115,20 @@
                 
             }, 500);
         } else {
-            let reason = iinenum < 30000 ? "too few like" : "no iine item";        
+            let reason = iinenum < 30000 ? "too few like" : "no iine item";
             clipboardText = "iineSkip:" + reason + ":" + currentURL;
         
-            navigator.clipboard.writeText(clipboardText).then(() => {
+            retryClipboardWrite(clipboardText).then(() => {
                 setTimeout(function() {
                     window.close();
                 }, 500);
             }).catch(err => {
-                //loge("Failed to write to clipboard: " + err);
                 setTimeout(function() {
                     window.close();
                 }, 500);
             });
         }
+        
 
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
