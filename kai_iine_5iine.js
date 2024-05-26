@@ -1,8 +1,5 @@
 (function() {
     
-    //debug
-    navigator.clipboard.writeText("iine5 start");
-
     var currentURL = window.location.href;
 
     // トースト
@@ -57,7 +54,7 @@
         //debug
         navigator.clipboard.writeText("iine5 room");
 
-        
+    
         // クリック処理
         
         var spans = document.getElementsByTagName("span");
@@ -137,8 +134,6 @@
 
     // リストを開いているなら
     } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
-
-        navigator.clipboard.writeText("iine5 list");
 
         // 現在のページのファイル名を取得
         const currentPage = window.location.pathname.split('/').pop();
