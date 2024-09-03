@@ -1,5 +1,8 @@
 // クラス名が "bookmark-share-icon" の<a>タグを取得
 var bookmarkShareIconLink = document.querySelector('a[class*="bookmark-share-icon"]');
+if(bookmarkShareIconLink === null) {
+    bookmarkShareIconLink = document.querySelector('.item-share-button-widget.item-share-button-widget-room');
+}
 
 // 要素が存在するか確認
 if (bookmarkShareIconLink) {
