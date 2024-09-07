@@ -4,6 +4,10 @@ javascript:(function() {
         var textarea = document.getElementById('collect-content');
         if (textarea) {
             textarea.value = text; // クリップボードの内容をセット
+
+            // inputイベントを手動で発火させる
+            var event = new Event('input', { bubbles: true });
+            textarea.dispatchEvent(event);
         }
 
         // 2. 2秒後にbuttonをクリック
