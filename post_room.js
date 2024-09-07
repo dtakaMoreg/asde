@@ -16,7 +16,7 @@ javascript:(function() {
             if (button) {
                 button.click(); // ボタンをクリック
             }
-        }, 21000); // 2秒待つ
+        }, 2000); // 2秒待つ
 
     }).catch(function(err) {
         console.error('クリップボードの内容を取得できませんでした: ', err);
