@@ -10,7 +10,7 @@ javascript:(function() {
         setTimeout(function() {
             var button = document.querySelector('button.collect-btn');
             if (button) {
-                button.click(); // ボタンをクリック
+               // button.click(); // ボタンをクリック
             }
         }, 12000); // 2秒待つ
     }).catch(function(err) {
