@@ -12,7 +12,7 @@ javascript:(function() {
             if (button) {
                 button.click(); // ボタンをクリック
             }
-        }, 2000); // 2秒待つ
+        }, 12000); // 2秒待つ
     }).catch(function(err) {
         console.error('クリップボードの内容を取得できませんでした: ', err);
     });
