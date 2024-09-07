@@ -12,7 +12,7 @@ javascript:(function() {
                 // inputイベントを手動で発火させる
                 var event = new Event('input', { bubbles: true });
                 textarea.dispatchEvent(event);
-            }, 1000); // 1000ミリ秒 = 1秒
+            }, 1000);
         }
     }).catch(function(err) {
         console.error('クリップボードの内容を取得できませんでした: ', err);
