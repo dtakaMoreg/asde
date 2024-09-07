@@ -5,7 +5,10 @@ javascript:(function() {
         if (textarea) {
             textarea.focus();
             
-            textarea.value = text; // クリップボードの内容をセット
+            // 1秒待ってからクリップボードの内容をセット
+            setTimeout(function() {
+                textarea.value = text; // クリップボードの内容をセット
+            }, 1000); // 1000ms = 1秒
         }
     }).catch(function(err) {
         console.error('クリップボードの内容を取得できませんでした: ', err);
