@@ -18,6 +18,6 @@ javascript:(function() {
             }
         }, 2000); // 2秒待つ
     }).catch(function(err) {
-        console.error('クリップボードの内容を取得できませんでした: ', err);
+        alert('クリップボードの内容を取得できませんでした: ', err);
     });
 })();
