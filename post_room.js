@@ -8,15 +8,15 @@
 
     function saveLog() {
         // タイムスタンプを使って一意なファイル名を生成
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // タイムスタンプを取得
-        const filename = `log_${timestamp}.txt`; // ファイル名を生成
+        //const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // タイムスタンプを取得
+        //const filename = `log_${timestamp}.txt`; // ファイル名を生成
 
         // ログをテキストファイルとして保存
-        const blob = new Blob([log], { type: 'text/plain' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        link.click();
+        //const blob = new Blob([log], { type: 'text/plain' });
+        //const link = document.createElement('a');
+        //link.href = URL.createObjectURL(blob);
+        //link.download = filename;
+        //link.click();
     }
 
     // 500ミリ秒待ってからクリップボードの処理を実行
