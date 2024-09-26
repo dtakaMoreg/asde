@@ -53,8 +53,8 @@ javascript:(function() {
                         s = s + 10;
                         const rank = divelements[0].className[s]
                         //if(rank === "d" || rank === "e"){
-                            collectedURLs.push(rank + '@https://room.rakuten.co.jp' + hreft);
-                        }
+                            collectedURLs.push(rank + '\thttps://room.rakuten.co.jp' + hreft);
+                        //}
                     }
                 }
             }
