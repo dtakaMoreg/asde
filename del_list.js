@@ -19,10 +19,19 @@ javascript:(function() {
         userList.scrollTop = userList.scrollHeight;
     }
 
+    function dispHidden(userList) {
+        var elements = userList.querySelectorAll('div[class*="spacer"]');
+        elements.forEach(function(el) {
+            el.style.display = 'none';
+        });
+    }
+
     // スクロールが終了するまでスクロールを続けます
     var scrollInterval = setInterval(function() {
         var prevHeight = userList.scrollTop;
         scrollToBottom();
+        dispHidden(userList);
+        
         if (prevHeight === userList.scrollTop) {
             if(scroll_count>20){
                 clearInterval(scrollInterval);
@@ -37,6 +46,7 @@ javascript:(function() {
             scroll_count = 0;
         }
         
+
     }, 500); // 500msごとにスクロール
 
 
