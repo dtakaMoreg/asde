@@ -24,7 +24,7 @@ javascript:(function() {
         var prevHeight = userList.scrollTop;
         scrollToBottom();
         if (prevHeight === userList.scrollTop) {
-            if(scroll_count>10){
+            if(scroll_count>20){
                 clearInterval(scrollInterval);
             
                 // スクロールが終了したらリンク要素を取得します
@@ -37,7 +37,7 @@ javascript:(function() {
             scroll_count = 0;
         }
         
-    }, 700); // 500msごとにスクロール
+    }, 500); // 500msごとにスクロール
 
 
     // リンク要素を取得
@@ -78,19 +78,16 @@ javascript:(function() {
         // なければやらない
         if(collectedURLs.length > nextinfo) {
             var linkTexts = [];
-            linkTexts.push('<html lang="ja">');
-            linkTexts.push('<div class="link_text"></div>');
             for (var i = nextinfo; i < collectedURLs.length; i++) {
-                linkTexts.push('<a href="' + collectedURLs[i] + '">User_' + (i+1) + '</a></br>');
+                linkTexts.push(collectedURLs[i]);
             }
-            linkTexts.push('</html>');
             var textData = linkTexts.join('\n');
-            var blob = new Blob([textData], { type: 'text/html' });
+            var blob = new Blob([textData], { type: 'text/plain' });
             var url = URL.createObjectURL(blob);
 
             var a = document.createElement('a');
             a.href = url;
-            a.download = fileName + '.html';
+            a.download = fileName + '.txt';
             a.style.display = 'none';
             document.body.appendChild(a);
 
