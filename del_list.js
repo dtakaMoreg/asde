@@ -5,8 +5,8 @@ javascript:(function() {
     var fileName ="";
     var scroll_count= 0;
     var collectedURLs = [];
-    
-    navigator.clipboard.writeText("start");  
+    var linkcount = 0;
+
 
     // 指定したIDの要素を取得します
     var userList = document.getElementById('userList');
@@ -26,13 +26,26 @@ javascript:(function() {
         });
     }
 
+    function counthref(){
+        var links = document.getElementsByTagName('a');
+        var count = 0;
+        for (var i = 0; i < links.length; i++) {
+            var hreft = links[i].getAttribute("href");
+            if (hreft != null && hreft.length > 7 && hreft.includes("/items")) {
+                count++;
+            }
+        }
+    
+        return count;
+    }
+
     // スクロールが終了するまでスクロールを続けます
     var scrollInterval = setInterval(function() {
         var prevHeight = userList.scrollTop;
         scrollToBottom();
         dispHidden(userList);
-        
-        if (prevHeight === userList.scrollTop) {
+        var links = counthref();
+        if (linkcount >= links) {
             if(scroll_count>20){
                 clearInterval(scrollInterval);
             
@@ -44,15 +57,20 @@ javascript:(function() {
             
         }else{
             scroll_count = 0;
+            linkcount = links;
+            
+
         }
         
-
+        document.title = linkcount + "/" + scroll_count;
     }, 500); // 500msごとにスクロール
 
 
     // リンク要素を取得
     function getRoomDelLink() {
         var links = document.getElementsByTagName('a');
+        document.title = "aa" + links.length;
+        
         for (var i = 0; i < links.length; i++) {
             hreft = links[i].getAttribute("href");
             if (hreft != null && hreft.length > 7 && hreft.includes("/items")) {

@@ -45,22 +45,11 @@
     if (currentURL.indexOf('https://room.rakuten.co.jp/') !== -1) {
         var v = localStorage.getItem('iineClick') || 0;
         var vint = parseInt(v);
-
-        // トースト更新
-        // var message = `[${vint}]`;
-        // window.toast.textContent = message;
-        // window.toast.style.display = "block";
-
-        //debug
-        navigator.clipboard.writeText("iine5 room");
-
     
-        // クリック処理
-        
+        // クリック処理        
         var spans = document.getElementsByTagName("span");
         var iinecnt = spans.length > 11 ? spans[11].innerText : "0";
         var iinenum = iinestr2num(iinecnt);
-        
         
         // いいねできそうな位置をチェック
         let like = null;
@@ -92,7 +81,8 @@
             });
         }
         
-        if ((like !== null) && (iinenum >= 30000)) {
+        if (like !== null) {
+        //if ((like !== null) && (iinenum >= 30000)) {
             like.click();
         
             setTimeout(() => {
