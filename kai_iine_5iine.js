@@ -2,14 +2,6 @@
     
     var currentURL = window.location.href;
 
-    // トースト
-    if (typeof window.toast === 'undefined') {
-        window.toast = document.createElement("div");
-        window.toast.style.cssText = "position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px; border-radius: 5px; z-index: 2147483647; font-size: 64px;";
-        window.toast.style.display = "none";
-        document.body.appendChild(window.toast);
-    }
-
     // いいねしている数を取得
     function iinestr2num(input) {
         if (typeof input !== 'string') {
@@ -81,8 +73,8 @@
             });
         }
         
-        if (like !== null) {
-        //if ((like !== null) && (iinenum >= 30000)) {
+        //if (like !== null) {
+        if ((like !== null) && (iinenum >= 30000)) {
             like.click();
         
             setTimeout(() => {
@@ -122,68 +114,7 @@
         }
         
 
-    // リストを開いているなら
-    } else if (document.getElementsByTagName("div")[0].classList.contains("link_text") == true) {
-
-        // 現在のページのファイル名を取得
-        const currentPage = window.location.pathname.split('/').pop();
-
-        // localStorageから保存されたカウンターを取得
-        var counter = localStorage.getItem(currentPage);
-
-        // カウンターがnull（まだ設定されていない）場合、0に設定
-        counter = counter === null ? 0 : parseInt(counter);
-
-        // localStorageから最後の実行時刻を取得
-        const currentTime = new Date().getTime();
-        const lastExecutionTime = localStorage.getItem('last_execution_time') || 0;
-
-        let clickcounter;
-        if (currentTime - parseInt(lastExecutionTime) >= 3600000) {
-            // 1時間以上経過した場合、counterを0に設定
-            clickcounter = 0;
-        } else {
-            // 最後の実行から1時間以内の場合、counterの値を使用
-            clickcounter = localStorage.getItem('clickcounter') || 0;
-            clickcounter = parseInt(clickcounter);
-        }
-
-        var links = document.querySelectorAll('a');
-
-        // リンクチェック
-        if (links.length <= counter) {
-            // alert("max");
-            window.toast.style.display = "none";
-            localStorage.removeItem(currentPage);
-            window.close();
-        } else {
-            
-            if (links.length > counter) {
-
-                let newtab = window.open(links[counter], '_blank');
-                links[counter].textContent = "[done] " + links[counter].textContent
-
-                // クリップボード更新
-                navigator.clipboard.writeText("open:" + links[counter]);
-
-                counter++;
-
-                // localStorageに保存
-                localStorage.setItem(currentPage, counter);
-
-                clickcounter++;
-                localStorage.setItem('clickcounter', clickcounter);
-                localStorage.setItem('last_execution_time', currentTime);
-            }
-        }
-
-        // トースト更新
-        var message = counter + "/" + links.length;
-        window.toast.textContent = message;
-        window.toast.style.display = "block";
-
-
-    // どちらのページも開けてなければ
+    // ページを開けてなければ
     } else {
         navigator.clipboard.writeText("iinePageNG")
         .then(() => {
