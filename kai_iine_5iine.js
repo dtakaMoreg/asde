@@ -73,19 +73,20 @@
             like.click();
             setTimeout(() => {
                 const isColorWhite = like.className.includes('color-white');
-                const clipboardText = isColorWhite
-                    ? `iineNG:${currentURL}`
-                    : `iineOK:${currentURL}`;
-                //closeAfterWrite(clipboardText);
+                if (!isColorWhite) {
+                    // isColorWhiteがfalseの場合のみ実行
+                    const clipboardText = `iineOK:${currentURL}`;
+                    closeAfterWrite(clipboardText);
+                }
             }, 500);
         } else {
             // いいね不可の場合
             const reason = iinenum < 30000 ? 'too few like' : 'no iine item';
             const clipboardText = `iineSkip:${reason}:${currentURL}`;
-            //closeAfterWrite(clipboardText);
+            closeAfterWrite(clipboardText); // 実行
         }
     } else {
         // ページが対象外の場合
-        //closeAfterWrite('iinePageNG');
+        closeAfterWrite('iinePageNG'); // 実行
     }
 })();
