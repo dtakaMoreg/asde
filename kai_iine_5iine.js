@@ -76,17 +76,17 @@
                 if (!isColorWhite) {
                     // isColorWhiteがfalseの場合のみ実行
                     const clipboardText = `iineOK:${currentURL}`;
-                    //loseAfterWrite(clipboardText);
+                    closeAfterWrite(clipboardText);
                 }
             }, 500);
         } else {
             // いいね不可の場合
             const reason = iinenum < 30000 ? 'too few like' : 'no iine item';
             const clipboardText = `iineSkip:${reason}:${currentURL}`;
-            //closeAfterWrite(clipboardText); // 実行
+            closeAfterWrite(clipboardText); // 実行
         }
     } else {
         // ページが対象外の場合
-        //closeAfterWrite('iinePageNG'); // 実行
+        closeAfterWrite('iinePageNG'); // 実行
     }
 })();
