@@ -55,9 +55,10 @@
         const iinenum = iinestr2num(iinecnt);
 
         // いいねボタンを探す
+        // 変更　一番上のみ（for文で1回だけ）
         const buttonElements = document.querySelectorAll('button');
         let like = null;
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 1; i++) {
             const ind = 4 + Math.floor(i / 2) + (i % 2) * 10; // いいねの位置
             if (ind >= buttonElements.length) break;
 
