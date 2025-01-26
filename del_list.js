@@ -26,17 +26,22 @@ javascript:(function() {
         });
     }
 
-    function counthref(){
+    function counthref() {
         var links = document.getElementsByTagName('a');
+        var uniqueHrefs = new Set(); // ユニークな href 値を保存するセット
         var count = 0;
+    
         for (var i = 0; i < links.length; i++) {
             var hreft = links[i].getAttribute("href");
-            if (hreft != null && hreft.length > 7 && hreft.includes("/items")) {
-                count++;
+            if (hreft != null && hreft.includes("/items")) {
+                if (!uniqueHrefs.has(hreft)) { // まだセットに含まれていなければ
+                    uniqueHrefs.add(hreft); // セットに追加
+                    count++; // カウントを増やす
+                }
             }
         }
     
-        return count;
+        return count; // ユニークな /items を含む href の数を返す
     }
 
     // スクロールが終了するまでスクロールを続けます
