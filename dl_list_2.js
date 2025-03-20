@@ -16,7 +16,7 @@
     
     // スクロール関数
     const scrollToBottom = () => {
-        userList.scrollTop += 100;
+        userList.scrollTop += 1000;
         userList.dispatchEvent(new Event('scroll'));
     };
 
@@ -25,15 +25,14 @@
         elements.forEach(el => el.style.display = 'none');
     };
 
-    const counthref = () => {
-        const links = document.getElementsByTagName('a');
-        const uniqueHrefs = new Set();
+    // `counthref` を最初に定義
+    function counthref() {
+        const links = document.querySelectorAll('dl a[ng-href]');
         let count = 0;
     
         for (const link of links) {
             const hreft = link.getAttribute("href");
-            if (hreft && hreft.includes("/items") && !uniqueHrefs.has(hreft)) {
-                uniqueHrefs.add(hreft);
+            if (hreft && hreft.includes("/items")) {
                 count++;
             }
         }
