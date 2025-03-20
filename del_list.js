@@ -51,7 +51,7 @@ javascript:(function() {
         dispHidden(userList);
         var links = counthref();
         if (linkcount >= links) {
-            if(scroll_count>20){
+            if(scroll_count>100){
                 clearInterval(scrollInterval);
             
                 // スクロールが終了したらリンク要素を取得します
